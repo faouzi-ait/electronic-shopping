@@ -1,5 +1,6 @@
+import React from "react";
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 export const Nav = styled.nav`
   display: flex;
@@ -14,6 +15,7 @@ export const LeftNavContainer = styled.div`
   position: absolute;
   width: 30%;
   height: 100%;
+  padding: 0 !important;
   background: #fff;
   border-right: 3px solid rgba(204, 204, 204, 0.274);
 
@@ -49,10 +51,55 @@ export const IconMenu = styled.i`
 
 export const LeftUL = styled.ul`
   margin-top: 2rem;
+  padding: 0 !important;
   list-style-type: none;
 `;
 
 export const LeftLI = styled.li`
   margin-bottom: 1rem;
   text-decoration: none;
+  transition: var(--maintransition);
+  padding-left: 2rem;
+
+  &:hover {
+    background: #5fb7ea;
+  }
+
+  &:hover a {
+    color: var(--mainwhite) !important;
+  }
 `;
+
+export const LeftMenuListItems = _ => {
+  return (
+    <LeftUL>
+      <div className="navbar-list">
+        <LeftLI>
+          <NavLink exact to="/" activeClassName="chosen">
+            Home
+          </NavLink>
+        </LeftLI>
+        <LeftLI>
+          <NavLink to="/about" activeClassName="chosen">
+            About
+          </NavLink>
+        </LeftLI>
+        <LeftLI>
+          <NavLink to="/products" activeClassName="chosen">
+            Products
+          </NavLink>
+        </LeftLI>
+        <LeftLI>
+          <NavLink to="/contact" activeClassName="chosen">
+            Contact
+          </NavLink>
+        </LeftLI>
+        <LeftLI>
+          <NavLink to="/cart" activeClassName="chosen">
+            Cart
+          </NavLink>
+        </LeftLI>
+      </div>
+    </LeftUL>
+  );
+};
