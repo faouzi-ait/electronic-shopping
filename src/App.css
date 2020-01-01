@@ -25,5 +25,19 @@ body {
 }
 
 .text-main {
-  color: var(--primary)
+  color: var(--primary);
+}
+
+/* .active {
+  color: red;
+  background: pink;
+} */
+
+.navbar-list a,
+.navbar-list a.chosen,
+.navbar-list a:link,
+.navbar-list a:hover {
+  font-size: 1.8rem;
+  text-decoration: none;
+  color: var(--mainblack);
 }
