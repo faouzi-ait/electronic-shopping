@@ -3,6 +3,8 @@ import styled from "styled-components";
 import { NavLink } from "react-router-dom";
 
 export const Nav = styled.nav`
+  position: fixed;
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,7 +14,8 @@ export const Nav = styled.nav`
 `;
 
 export const LeftNavContainer = styled.div`
-  position: absolute;
+  position: fixed;
+  top: 4.1rem;
   width: 30%;
   height: 100%;
   padding: 0 !important;
@@ -21,19 +24,7 @@ export const LeftNavContainer = styled.div`
 
   @media screen and (max-width: 768px) {
     width: 100%;
-  }
-`;
-
-export const RightNavContainer = styled.div`
-  position: absolute;
-  right: 0;
-  width: 30%;
-  height: 100%;
-  background: #fff;
-  border-left: 3px solid rgba(204, 204, 204, 0.274);
-
-  @media screen and (max-width: 768px) {
-    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -75,27 +66,27 @@ export const LeftMenuListItems = _ => {
     <LeftUL>
       <div className="navbar-list">
         <LeftLI>
-          <NavLink exact to="/" activeClassName="chosen">
+          <NavLink exact to="/" className="chosen">
             Home
           </NavLink>
         </LeftLI>
         <LeftLI>
-          <NavLink to="/about" activeClassName="chosen">
+          <NavLink to="/about" className="chosen" activeClassName="active">
             About
           </NavLink>
         </LeftLI>
         <LeftLI>
-          <NavLink to="/products" activeClassName="chosen">
+          <NavLink to="/products" className="chosen">
             Products
           </NavLink>
         </LeftLI>
         <LeftLI>
-          <NavLink to="/contact" activeClassName="chosen">
+          <NavLink to="/contact" className="chosen">
             Contact
           </NavLink>
         </LeftLI>
         <LeftLI>
-          <NavLink to="/cart" activeClassName="chosen">
+          <NavLink to="/cart" className="chosen">
             Cart
           </NavLink>
         </LeftLI>

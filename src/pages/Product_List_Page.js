@@ -5,5 +5,5 @@ export default function Product_List_Page() {
   const [list] = useContext(DataContext);
 
   console.log(list);
-  return <div>Product List Page</div>;
+  return <div className="products">Product List Page</div>;
 }

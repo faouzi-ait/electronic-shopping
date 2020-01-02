@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { DataContext } from "../../context/context";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
-import { Nav, TopTitle, IconMenu } from "./ComponentStyle";
+import { Nav, TopTitle, IconMenu } from "./SideBarLeftStyles";
 
 export default function Navbar() {
   const [, , menuToggles] = useContext(DataContext);

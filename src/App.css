@@ -14,7 +14,17 @@
 body {
   font-family: 'Open Sans', sans-serif !important;
   background: var(--maingrey) !important;
-  color: var(--mainblack)
+  color: var(--mainblack);
+}
+
+.home,
+.about,
+.contact,
+.default,
+.products,
+.shopping {
+  min-height: calc(100vh - 4rem);
+  padding-top: 4rem;
 }
 
 .text-title {
@@ -28,16 +38,46 @@ body {
   color: var(--primary);
 }
 
-/* .active {
-  color: red;
-  background: pink;
-} */
-
 .navbar-list a,
 .navbar-list a.chosen,
 .navbar-list a:link,
 .navbar-list a:hover {
   font-size: 1.8rem;
-  text-decoration: none;
   color: var(--mainblack);
+  text-decoration: none;
+  transition: var(--maintransition)
+}
+
+.active {
+  padding-left: 10px;
+  border-left: 1.2rem solid #5fb7ea;
+}
+
+.linkcontainer {
+  display: inline-flex;
+  padding: 5px 5px;
+  border: 2px solid var(--primary);
+  transition: var(--maintransition);
+}
+
+a.homeProductList,
+a.homeProductList:link {
+  padding: 7px 15px;
+  background: var(--primary);
+  font-size: 1rem !important;
+  color: #fff !important;
+  text-decoration: none;
+  text-shadow: none;
+  border: 2px solid var(--primary);
+  transition: var(--maintransition);
+}
+
+a.homeProductList:hover,
+.linkcontainer:hover {
+  border: 2px solid var(--mainwhite);
+}
+
+a.homeProductList:hover {
+  background: var(--mainwhite);
+  color: var(--mainblack) !important;
 }
