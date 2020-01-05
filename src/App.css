@@ -2,6 +2,7 @@
 
 :root {
   --primary: #5fb7ea;
+  --primaryForm: #00c8d6;
   --primaryRGBA: rgba(0, 0, 0, .3);
   --maingrey: #fafafa;
   --darkgrey: #5f5e5e;
@@ -162,4 +163,135 @@ a.primary-button:hover {
 .more-info {
   text-transform: uppercase;
   letter-spacing: 2px;
+}
+
+/* CONTACT FORM STYLES */
+form {
+  display: grid;
+  padding: 1em;
+  background: #f9f9f9;
+  border: 1px solid #c1c1c1;
+  margin: 2rem auto 0 auto;
+  max-width: 600px;
+  padding: 1em;
+  border-radius: 3px;
+}
+
+form input {
+  background: #fff;
+  border: 1px solid #9c9c9c;
+}
+
+form button {
+  background: lightgrey;
+  padding: 0.7em;
+  width: 100%;
+  border: 0;
+}
+
+form button:hover {
+  background: var(--primary);
+  opacity: .5;
+}
+
+label {
+  letter-spacing: 1px;
+  padding: 0.5em 0.5em 0.5em 0;
+}
+
+input,
+textarea {
+  padding: 0.7em;
+  margin-bottom: 0.5rem;
+  border-radius: 3px;
+  border: 0 !important;
+}
+
+input:focus,
+textarea:focus {
+  outline: 1px solid var(--primaryForm);
+}
+
+.submitStyle {
+  border-radius: 3px;
+  transition: var(--maintransition)
+}
+
+.submitStyle:hover {
+  color: var(--mainblack);
+  opacity: .8;
+}
+
+.submitStyle:focus {
+  outline: none;
+}
+
+::placeholder {
+  font-style: italic;
+}
+
+.showConfirmation {
+  width: 100%;
+  font-size: 1.4rem;
+  color: var(--mainwhite);
+  background: red;
+  padding: 10px 15px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.showError {
+  width: 100%;
+  font-size: 1.4rem;
+  color: var(--mainwhite);
+  background: red;
+  padding: 10px 15px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.errorBorder {
+  width: 25%;
+  margin: .5rem auto !important;
+  padding: 3px;
+  border: 1px solid red;
+  border-radius: 3px;
+}
+
+.showConfirmation {
+  width: 100%;
+  font-size: 1.4rem;
+  color: var(--mainwhite);
+  background: rgb(0, 172, 0);
+  padding: 10px 15px;
+  letter-spacing: 1.5px;
+  text-align: center;
+  border-radius: 3px;
+}
+
+.confirmationBorder {
+  width: 45%;
+  margin: .5rem auto !important;
+  padding: 3px;
+  border: 1px solid rgb(0, 172, 0);
+  border-radius: 3px;
+}
+
+@media (min-width: 400px) {
+  form {
+    grid-template-columns: 200px 1fr;
+    grid-gap: 16px;
+  }
+
+  label {
+    text-align: right;
+    grid-column: 1 / 2;
+  }
+
+  input,
+  button {
+    grid-column: 2 / 3;
+  }
 }

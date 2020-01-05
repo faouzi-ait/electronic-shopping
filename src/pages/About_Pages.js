@@ -11,6 +11,8 @@ import {
   AboutFilter
 } from "../components/home_components/HeroComponentStyles";
 
+import TitleComponent from '../components/about_components/AboutComponents'
+
 export default function About_Pages() {
   const bg_url =
     "url(../../resources/page-images/images/aboutBcg.jpeg) center/cover no-repeat;";
@@ -25,8 +27,7 @@ export default function About_Pages() {
           <LeftImage bg={bg_url} />
         </div>
         <div className="about-right">
-          <p className="about-title">The Store</p>
-          <div className="underline"></div>
+          <TitleComponent title="The Store" />
           <div className="about-text">
             <p>
               Lorem ipsum ed cautela nimia in peiores haeserat plagas, ut
