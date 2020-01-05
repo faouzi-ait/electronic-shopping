@@ -9,6 +9,7 @@ export const RightNavContainer = styled.div`
   background: #fff;
   padding: 1.5rem;
   border-left: 3px solid rgba(204, 204, 204, 0.274);
+  z-index: 9999;
 
   @media screen and (max-width: 768px) {
     width: 100%;

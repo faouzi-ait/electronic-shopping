@@ -1,11 +1,29 @@
 import Styled from "styled-components";
 
+// PASS THE BACKGROUD IMAGE AS A PROPS
 export const HomeHero = Styled.header`
    min-height: 100vh;
-   background: url("../../resources/page-images/images/mainBcg.jpeg") center/cover no-repeat;
+   background: ${props => props.bg};
    display: flex;
    align-items: center;
    justify-content: center;
+`;
+
+export const AboutHero = Styled.header`
+   min-height: 50vh;
+   background: ${props => props.bg};
+   margin-top: -35vh;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+`;
+
+export const AboutFilter = Styled.div`
+   min-height: 50vh;
+   width: 100vw;
+   background: var(--mainblack);
+   opacity: .3;
+   v-index: -99999;
 `;
 
 export const HomePageTitle = Styled.h1`
@@ -26,17 +44,3 @@ export const HomePageLink = Styled.a`
    letter-spacing: 3px;
    width: 42%;
 `;
-
-// .defaultHero,
-// .roomsHero {
-//   min-height: calc(100vh - 66px);
-//   background: url("../../resources/images/defaultBcg.jpeg") center/cover no-repeat;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
-
-// .roomsHero {
-//   background-image: url("../../resources/images/room-2.jpeg");
-//   min-height: 60vh;
-// }

@@ -11,6 +11,7 @@ export const Nav = styled.nav`
   background: #fff;
   padding: 15px 35px;
   border-bottom: 3px solid rgba(204, 204, 204, 0.274);
+  z-index: 9999;
 `;
 
 export const LeftNavContainer = styled.div`
@@ -21,6 +22,7 @@ export const LeftNavContainer = styled.div`
   padding: 0 !important;
   background: #fff;
   border-right: 3px solid rgba(204, 204, 204, 0.274);
+  z-index: 9999;
 
   @media screen and (max-width: 768px) {
     width: 100%;

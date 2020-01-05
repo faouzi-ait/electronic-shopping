@@ -20,7 +20,7 @@ export const DataProvider = props => {
 
   const getList = async _ => {
     const request = await ProductList("resources/data/productData.json");
-    const response = request;
+    const response = request.data;
 
     setProducts(response);
   };

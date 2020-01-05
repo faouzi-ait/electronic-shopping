@@ -20,11 +20,14 @@ body {
 .home,
 .about,
 .contact,
-.default,
 .products,
 .shopping {
-  min-height: calc(100vh - 4rem);
+  min-height: 93vh;
   padding-top: 4rem;
+}
+
+.default {
+  min-height: 93vh;
 }
 
 .text-title {
@@ -53,15 +56,15 @@ body {
   border-left: 1.2rem solid #5fb7ea;
 }
 
-.linkcontainer {
+.primary-button-container {
   display: inline-flex;
   padding: 5px 5px;
   border: 2px solid var(--primary);
   transition: var(--maintransition);
 }
 
-a.homeProductList,
-a.homeProductList:link {
+a.primary-button,
+a.primary-button:link {
   padding: 7px 15px;
   background: var(--primary);
   font-size: 1rem !important;
@@ -72,12 +75,91 @@ a.homeProductList:link {
   transition: var(--maintransition);
 }
 
-a.homeProductList:hover,
-.linkcontainer:hover {
+a.primary-button:hover,
+.primary-button-container:hover {
   border: 2px solid var(--mainwhite);
 }
 
-a.homeProductList:hover {
+a.primary-button:hover {
   background: var(--mainwhite);
   color: var(--mainblack) !important;
+}
+
+.footer-section {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  place-items: center center;
+  min-height: 7vh;
+  color: var(--mainwhite);
+  background: var(--darkgrey);
+}
+
+.copyright {
+  letter-spacing: 1px;
+  font-style: italic
+}
+
+.social-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-items: center;
+  font-size: 1.4rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 500px) {
+  .footer-section {
+    display: flex;
+    flex-direction: column;
+    min-height: 7vh;
+    padding-top: 1rem;
+    color: var(--mainwhite);
+    background: var(--darkgrey);
+  }
+
+  .social-links {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    width: 100%;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.about-left {
+  margin-right: 1.5rem;
+}
+
+.about-title {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.underline {
+  width: 20%;
+  margin: -15px 0 1rem 0;
+  border-bottom: 3px solid var(--primary);
+  opacity: .6;
+  border-radius: 3px;
+}
+
+.about-text p {
+  opacity: .7;
+}
+
+.about-right:last-child() {
+  text-align: center;
+}
+
+.about-button {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem !important;
+}
+
+.more-info {
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
