@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { setTimeout } from "timers";
-import TitleComponent from "../components/about_components/AboutComponents";
 import {
   AboutHero,
   AboutFilter

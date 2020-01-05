@@ -279,6 +279,30 @@ textarea:focus {
   border-radius: 3px;
 }
 
+@media screen and (min-width: 900px) {
+  .errorBorder {
+    width: 40% !important;
+  }
+
+  .confirmationBorder {
+    width: 70%;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .contact-border {
+    width: 100% !important;
+  }
+
+  .errorBorder {
+    width: 50% !important;
+  }
+
+  .confirmationBorder {
+    width: 70%;
+  }
+}
+
 @media (min-width: 400px) {
   form {
     grid-template-columns: 200px 1fr;
