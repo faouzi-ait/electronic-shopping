@@ -1,6 +1,11 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { setTimeout } from "timers";
+import TitleComponent from "../components/about_components/AboutComponents";
+import {
+  AboutHero,
+  AboutFilter
+} from "../components/home_components/HeroComponentStyles";
 
 export default function Contact_Page() {
   const [firstname, setFirstname] = useState("");
@@ -73,8 +78,14 @@ export default function Contact_Page() {
     }, 3000);
   };
 
+  const bg_url =
+    "url(../../resources/page-images/images/contactBcg.jpeg) center/cover no-repeat;";
+
   return (
     <div className="contact">
+      <AboutHero bg={bg_url}>
+        <AboutFilter />
+      </AboutHero>
       <div className="contact-form">
         {error && (
           <div className="errorBorder">
@@ -91,6 +102,10 @@ export default function Contact_Page() {
             </div>
           </div>
         )}
+        <div className="contact-title">
+          <TitleComponent title="Contact Me" />
+        </div>
+
         <form className="form1" autoComplete="off">
           <label htmlFor="firstName" className="first-name">
             Firstname
