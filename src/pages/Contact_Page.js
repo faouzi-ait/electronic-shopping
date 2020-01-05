@@ -103,7 +103,8 @@ export default function Contact_Page() {
           </div>
         )}
         <div className="contact-title">
-          <TitleComponent title="Contact Me" />
+          <p>Contact</p>
+          <div className="contact-border"></div>
         </div>
 
         <form className="form1" autoComplete="off">

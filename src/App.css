@@ -297,6 +297,17 @@ textarea:focus {
 }
 
 .contact-title {
-  width: 20%;
+  width: 15%;
+  text-align: center;
   margin: 2rem auto;
+}
+
+.contact-title p {
+  font-size: 2rem;
+}
+
+.contact-border {
+  width: 70%;
+  margin: -1rem auto;
+  border-top: 3px solid var(--primaryForm)
 }
