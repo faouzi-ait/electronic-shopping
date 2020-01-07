@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Open+Sans&display=swap');
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,700i,800,800i,900|Open+Sans&display=swap");
 
 :root {
   --primary: #5fb7ea;
   --primaryForm: #00c8d6;
-  --primaryRGBA: rgba(0, 0, 0, .3);
+  --primaryRGBA: rgba(0, 0, 0, 0.3);
   --maingrey: #fafafa;
   --darkgrey: #5f5e5e;
   --mainwhite: #fff;
   --mainblack: #222;
   --maintransition: all 300ms ease-in-out;
-  --spacing: .3rem
+  --spacing: 0.3rem;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif !important;
+  font-family: "Open Sans", sans-serif !important;
   background: var(--maingrey) !important;
   color: var(--mainblack);
 }
@@ -49,7 +49,7 @@ body {
   font-size: 1.8rem;
   color: var(--mainblack);
   text-decoration: none;
-  transition: var(--maintransition)
+  transition: var(--maintransition);
 }
 
 .active {
@@ -97,7 +97,7 @@ a.primary-button:hover {
 
 .copyright {
   letter-spacing: 1px;
-  font-style: italic
+  font-style: italic;
 }
 
 .social-links {
@@ -142,12 +142,12 @@ a.primary-button:hover {
   width: 20%;
   margin: -15px 0 1rem 0;
   border-bottom: 3px solid var(--primary);
-  opacity: .6;
+  opacity: 0.6;
   border-radius: 3px;
 }
 
 .about-text p {
-  opacity: .7;
+  opacity: 0.7;
 }
 
 .about-right:last-child() {
@@ -170,7 +170,6 @@ form {
   display: grid;
   padding: 1em;
   background: #f9f9f9;
-  border: 1px solid #c1c1c1;
   margin: 2rem auto 0 auto;
   max-width: 600px;
   padding: 1em;
@@ -191,7 +190,7 @@ form button {
 
 form button:hover {
   background: var(--primary);
-  opacity: .5;
+  opacity: 0.5;
 }
 
 label {
@@ -214,12 +213,12 @@ textarea:focus {
 
 .submitStyle {
   border-radius: 3px;
-  transition: var(--maintransition)
+  transition: var(--maintransition);
 }
 
 .submitStyle:hover {
   color: var(--mainblack);
-  opacity: .8;
+  opacity: 0.8;
 }
 
 .submitStyle:focus {
@@ -254,7 +253,7 @@ textarea:focus {
 
 .errorBorder {
   width: 25%;
-  margin: .5rem auto !important;
+  margin: 0.5rem auto !important;
   padding: 3px;
   border: 1px solid red;
   border-radius: 3px;
@@ -273,7 +272,7 @@ textarea:focus {
 
 .confirmationBorder {
   width: 45%;
-  margin: .5rem auto !important;
+  margin: 0.5rem auto !important;
   padding: 3px;
   border: 1px solid rgb(0, 172, 0);
   border-radius: 3px;
@@ -333,5 +332,81 @@ textarea:focus {
 .contact-border {
   width: 70%;
   margin: -1rem auto;
-  border-top: 3px solid var(--primaryForm)
+  border-top: 3px solid var(--primaryForm);
+}
+
+/* SERVICES SECTION */
+.service-main-container {
+  background: var(--maingrey);
+}
+
+.services-section {
+  display: flex;
+  width: 75%;
+  margin: 0 auto;
+  padding: 2.5rem 0;
+  text-align: center;
+}
+
+.service-section-box {
+  margin-right: 1rem;
+  margin-bottom: 1.5rem;
+  padding: 25px 35px;
+  transition: var(--maintransition);
+  border-radius: 3px;
+  -webkit-box-shadow: 1px 1px 2px 1px #ccc;
+  -moz-box-shadow: 1px 1px 2px 1px #ccc;
+  box-shadow: 1px 1px 2px 1px #ccc;
+}
+
+.service-section-box:hover {
+  color: var(--mainwhite);
+  background: rgb(194, 194, 194);
+}
+
+.service-fa-icon {
+  font-size: 2rem;
+  color: var(--primaryForm);
+  margin-bottom: 1rem;
+}
+
+.service-icon {
+  transition: var(--maintransition);
+}
+
+.service-section-box:hover .service-icon {
+  color: var(--mainwhite);
+}
+
+.title {
+  font-size: 1.3rem;
+  font-weight: bolder;
+}
+
+.title-desc {
+  font-size: 1.2rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .services-section {
+    width: 70%;
+    flex-direction: column;
+    padding: 1.5rem 0;
+  }
+
+  .service-section-box {
+    margin: 1rem 1rem;
+    -webkit-box-shadow: 1px 1px 2px 1px #ccc;
+    -moz-box-shadow: 1px 1px 2px 1px #ccc;
+    box-shadow: 1px 1px 2px 1px #ccc;
+  }
+
+  .title {
+    font-size: 1rem;
+    font-weight: bolder;
+  }
+
+  .title-desc {
+    font-size: 1rem;
+  }
 }
