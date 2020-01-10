@@ -18,7 +18,7 @@ import SideRight from "./components/navigation/SidebarRight";
 import Footer from "./components/footer_components/Footer";
 
 const App = _ => {
-  const [list, , menuToggle] = useContext(DataContext);
+  const [, , menuToggle] = useContext(DataContext);
 
   return (
     <>

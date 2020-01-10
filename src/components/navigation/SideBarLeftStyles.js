@@ -22,7 +22,7 @@ export const LeftNavContainer = styled.div`
   padding: 0 !important;
   background: #fff;
   border-right: 3px solid rgba(204, 204, 204, 0.274);
-  z-index: 9999;
+  z-index: 10;
 
   @media screen and (max-width: 768px) {
     width: 100%;

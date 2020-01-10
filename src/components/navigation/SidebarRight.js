@@ -1,25 +1,26 @@
-import React from "react";
+import React, { useContext } from "react";
+import { DataContext } from "../../context/context";
 import { RightNavContainer } from "./SidebarRightStyles";
 import { Image, ItemTitle, ItemCount } from "./SidebarRightStyles";
 
 export default function SidebarRight() {
+  const [, , menuToggles] = useContext(DataContext);
+  const url_image = "./resources/product-images/img/";
+
+  console.log(menuToggles.cart.get);
+
   return (
     <RightNavContainer>
-      <div>
-        <Image src="resources/product-images/img/product-0.png" alt="stuff" />
-        <ItemTitle>google pixel - black</ItemTitle>
-        <ItemCount>amount: 1</ItemCount>
-      </div>
-      <div>
-        <Image src="resources/product-images/img/product-1.png" alt="stuff" />
-        <ItemTitle>samsung- silver</ItemTitle>
-        <ItemCount>amount: 1</ItemCount>
-      </div>
-      <div>
-        <Image src="resources/product-images/img/product-2.png" alt="stuff" />
-        <ItemTitle>htc - dark night</ItemTitle>
-        <ItemCount>amount: 1</ItemCount>
-      </div>
+      {menuToggles.cart.get.map((item, index) => (
+        <div key={index}>
+          <Image
+            src={`${url_image}${item.fields.image.fields.file.url}`}
+            alt="stuff"
+          />
+          <ItemTitle>{item.fields.title}</ItemTitle>
+          <ItemCount>amount: 1</ItemCount>
+        </div>
+      ))}
     </RightNavContainer>
   );
 }

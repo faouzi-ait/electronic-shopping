@@ -11,7 +11,7 @@ import {
   AboutFilter
 } from "../components/home_components/HeroComponentStyles";
 
-import TitleComponent from '../components/about_components/AboutComponents'
+import TitleComponent from "../components/about_components/AboutComponents";
 
 export default function About_Pages() {
   const bg_url =

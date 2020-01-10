@@ -22,6 +22,7 @@ body {
 .about,
 .contact,
 .products,
+.product,
 .shopping {
   min-height: 93vh;
   padding-top: 4rem;
@@ -93,6 +94,7 @@ a.primary-button:hover {
   min-height: 7vh;
   color: var(--mainwhite);
   background: var(--darkgrey);
+  z-index: 9999;
 }
 
 .copyright {
@@ -134,13 +136,14 @@ a.primary-button:hover {
 
 .about-title {
   font-size: 2rem;
+  margin-top: 2rem;
   font-weight: bold;
   letter-spacing: 2px;
 }
 
 .underline {
   width: 20%;
-  margin: -15px 0 1rem 0;
+  margin: 0 auto;
   border-bottom: 3px solid var(--primary);
   opacity: 0.6;
   border-radius: 3px;
@@ -336,11 +339,13 @@ textarea:focus {
 }
 
 /* SERVICES SECTION */
-.service-main-container {
+.service-main-container,
+.feature-main-container {
   background: var(--maingrey);
 }
 
-.services-section {
+.services-section,
+.feature-section {
   display: flex;
   width: 75%;
   margin: 0 auto;
@@ -348,7 +353,34 @@ textarea:focus {
   text-align: center;
 }
 
-.service-section-box {
+.product-section {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  justify-content: center;
+  text-align: center;
+  padding-top: 4rem;
+}
+
+.filter-section {
+  padding-top: 1rem;
+}
+
+@media screen and (min-width: 800px) {
+
+  .product-section {
+    padding: 0em 2rem 2rem 2rem;
+  }
+
+  .filter-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem 1rem 2rem;
+  }
+}
+
+.service-section-box,
+.feature-section-box {
   margin-right: 1rem;
   margin-bottom: 1.5rem;
   padding: 25px 35px;
@@ -359,23 +391,82 @@ textarea:focus {
   box-shadow: 1px 1px 2px 1px #ccc;
 }
 
+.feature-section-box {
+  position: relative;
+}
+
+.feature-section-box:hover .feature-overlay {
+  display: block;
+}
+
+.feature-overlay {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 5rem;
+  border-radius: 3px;
+  background: var(--maingrey);
+}
+
+.feature-overlay:not(.feature-addtocart) {
+  opacity: .8;
+}
+
+.feature-details,
+.feature-addtocart {
+  width: 35%;
+  margin: 0 auto;
+  padding: 0;
+  font-size: 2rem;
+  color: var(--mainblack);
+  cursor: pointer;
+  color: var(--primary);
+}
+
+.feature-addtocart,
+.cart {
+  font-size: 3rem;
+}
+
+.feature-details:hover,
+.feature-addtocart:hover {
+  color: var(--mainblack);
+  opacity: 1;
+}
+
 .service-section-box:hover {
   color: var(--mainwhite);
   background: rgb(194, 194, 194);
 }
 
-.service-fa-icon {
+.feature-img-item {
+  width: 80%;
+  object-fit: contain;
+  margin-bottom: 1rem;
+}
+
+.feature-single-item {
   font-size: 2rem;
   color: var(--primaryForm);
   margin-bottom: 1rem;
 }
 
 .service-icon {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+  color: var(--primary);
   transition: var(--maintransition);
 }
 
 .service-section-box:hover .service-icon {
   color: var(--mainwhite);
+}
+
+.service-title-align {
+  text-align: center;
 }
 
 .title {
@@ -387,14 +478,17 @@ textarea:focus {
   font-size: 1.2rem;
 }
 
-@media screen and (max-width: 1200px) {
-  .services-section {
-    width: 70%;
+@media screen and (max-width: 900px) {
+
+  .services-section,
+  .feature-section {
+    width: 80%;
     flex-direction: column;
     padding: 1.5rem 0;
   }
 
-  .service-section-box {
+  .service-section-box,
+  .feature-section-box {
     margin: 1rem 1rem;
     -webkit-box-shadow: 1px 1px 2px 1px #ccc;
     -moz-box-shadow: 1px 1px 2px 1px #ccc;
@@ -409,4 +503,44 @@ textarea:focus {
   .title-desc {
     font-size: 1rem;
   }
+
+  .filter-section {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: -2.5rem;
+    padding-top: 1rem;
+  }
+
+  .product-title {
+    font-size: 2rem;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  .product-border {
+    margin-top: -1rem;
+    border-top: 3px solid var(--primary)
+  }
+}
+
+.center {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.header-back {
+  background: url('/resources/page-images/images/productsBcg.jpeg') center/cover no-repeat;
+  height: 40vh !important;
+}
+
+.product-title {
+  font-size: 2rem;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.product-border {
+  margin-top: -1rem;
+  border-top: 3px solid var(--primary)
 }

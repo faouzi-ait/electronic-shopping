@@ -23,6 +23,7 @@ export default function Navbar() {
 
       <IconMenu>
         <FaShoppingCart onClick={rightMenu} />
+        {menuToggles.cart.get.length}
       </IconMenu>
     </Nav>
   );

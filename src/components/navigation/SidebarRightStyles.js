@@ -8,7 +8,9 @@ export const RightNavContainer = styled.div`
   right: 0;
   background: #fff;
   padding: 1.5rem;
+  padding-bottom: 7rem;
   border-left: 3px solid rgba(204, 204, 204, 0.274);
+  overflow-y: scroll;
   z-index: 9999;
 
   @media screen and (max-width: 768px) {
