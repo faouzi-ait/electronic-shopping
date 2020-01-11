@@ -11,22 +11,14 @@ export default function SidebarRight() {
   const [qty, setQty] = useState(1);
   const url_image = "./resources/product-images/img/";
 
-  useEffect(() => {
-    const getTotal = _ => {
-      const tt = menuToggles.cart.get
-        .map(item => item.total)
-        .reduce((a, b) => a + b, 0);
-      menuToggles.totalPrice.set(tt);
-    };
-    getTotal();
-  }, [qty, menuToggles.cart, menuToggles.totalPrice]);
+  useEffect(_ => total());
 
   const addQuantity = e => {
     const id = Number(e.target.dataset.id);
     const product = findProductById(menuToggles.cart.get, id);
 
-    setQty((product.quantity = product.quantity + 1));
     product.total = qty * product.fields.price;
+    setQty((product.quantity = product.quantity + 1));
   };
 
   const minusQuantity = e => {
@@ -36,15 +28,27 @@ export default function SidebarRight() {
     if (product.quantity === 0) {
       const newCart = menuToggles.cart.get.filter(item => item.quantity !== 0);
       menuToggles.cart.set(newCart);
-      return;
+      total();
     }
 
     if (product.quantity >= 1) {
       product.quantity = product.quantity - 1;
-      setQty(product.quantity);
       product.total = qty * product.fields.price;
+      setQty(product.quantity);
+      total();
     }
+    total();
   };
+
+  const total = _ => {
+    const tt = menuToggles.cart.get
+      .map(item => item.total)
+      .reduce((a, b) => a + b, 0);
+
+    menuToggles.totalPrice.set(tt);
+  };
+
+  total();
 
   return (
     <RightNavContainer>

@@ -3,7 +3,7 @@ import { DataContext } from "../../context/context";
 import { NavLink } from "react-router-dom";
 import { findProductById } from "../../utils/Utils";
 import { FaSearch } from "react-icons/fa";
-import { ErrorAlert, ConfirmationAlert } from "../../utils/Utils";
+import { ErrorAlert } from "../../utils/Utils";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function ProductComponent({ featuredProducts }) {
@@ -16,13 +16,14 @@ function ProductComponent({ featuredProducts }) {
       setError("");
     }, 3000);
   };
+
   const addToCart = event => {
     const id = Number(event.target.dataset.id);
     const selectedProduct = findProductById(products, id);
     const isProductAdded = findProductById(menuToggles.cart.get, id);
 
     if (isProductAdded !== undefined) {
-      setError(`This product was already added`);
+      setError(`Product already added`);
       removeErrorMsg();
       return;
     }
@@ -42,7 +43,9 @@ function ProductComponent({ featuredProducts }) {
 
   return (
     <>
-      <div className="added-product-in-component">{error && ErrorAlert(error)}</div>
+      <div className="added-product-in-component">
+        {error && ErrorAlert(error)}
+      </div>
       {featuredProducts.map((item, index) => (
         <>
           <div className="feature-section-box" key={index}>

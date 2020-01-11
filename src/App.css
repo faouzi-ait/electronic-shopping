@@ -430,7 +430,6 @@ textarea:focus {
   margin: 0 auto;
   padding: 0;
   font-size: 2rem;
-  color: var(--mainblack);
   cursor: pointer;
   color: var(--primary);
 }
@@ -444,6 +443,80 @@ textarea:focus {
 .feature-addtocart:hover {
   color: var(--mainblack);
   opacity: 1;
+}
+
+.single-page-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 85vh;
+}
+
+@media screen and (max-width: 800px) {
+  .single-page-container {
+    grid-template-columns: 1fr;
+    height: 110vh;
+  }
+
+  .right-single-section {
+    padding: 3rem !important;
+  }
+}
+
+.left-single-section {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-items: center;
+}
+
+.right-single-section {
+  padding: 3rem 3rem 3rem 0;
+}
+
+.single-product-title {
+  font-size: 2rem;
+  letter-spacing: 2px;
+  font-weight: bolder;
+  margin-bottom: 1rem;
+}
+
+.single-product-company-span {
+  font-size: 1.2rem;
+}
+
+.single-product-company {
+  display: inline-block;
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.single-product-title::first-letter,
+.single-product-company::first-letter {
+  text-transform: uppercase;
+}
+
+.single-product-price {
+  font-size: 1.4rem;
+  margin-bottom: 1rem;
+}
+
+.single-product-price::before {
+  content: 'Price: €'
+}
+
+.button-container {
+  display: grid;
+  grid-template-columns: 40% 40%;
+  justify-content: space-around;
+  margin-top: 5rem;
+}
+
+.fullwidth {
+  width: 100% !important;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
 }
 
 .service-section-box:hover {
