@@ -35,7 +35,7 @@ export default function About_Pages() {
             </p>
             <p>
               Lorem ipsum ed cautela nimia in peiores haeserat plagas, ut
-              narrabimus postea, aemulis consarcinantibus insidias graves apud
+              narrabimus postea.
             </p>
           </div>
           <div className="about-button">

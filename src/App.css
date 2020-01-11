@@ -156,6 +156,10 @@ a.primary-button:hover {
   opacity: 0.7;
 }
 
+.about-right {
+  margin-top: -2rem;
+}
+
 .about-right:last-child() {
   text-align: center;
 }
@@ -700,5 +704,9 @@ textarea:focus {
 .cart-total-icon {
   color: var(--primary);
   font-size: 5rem;
-  margin-top: -1.5rem
+  margin-top: -1.5rem !important
+}
+
+.checkout-top-margin {
+  margin-top: -.4rem !important;
 }

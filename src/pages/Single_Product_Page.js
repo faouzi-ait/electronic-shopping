@@ -4,7 +4,6 @@ import { DataContext } from "../context/context";
 import { ErrorAlert } from "../utils/Utils";
 import { findProductById } from "../utils/Utils";
 import { NavLink } from "react-router-dom";
-
 import {
   AboutHero,
   AboutFilter

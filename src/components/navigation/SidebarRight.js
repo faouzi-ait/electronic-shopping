@@ -40,6 +40,18 @@ export default function SidebarRight() {
     total();
   };
 
+  const deleteItem = e => {
+    const id = Number(e.target.dataset.id);
+    const newCart = menuToggles.cart.get.filter(item => item.fields.id !== id);
+
+    menuToggles.cart.set(newCart);
+    total();
+  };
+
+  const clearCart = _ => {
+    menuToggles.cart.set([]);
+  };
+
   const total = _ => {
     const tt = menuToggles.cart.get
       .map(item => item.total)
@@ -56,11 +68,11 @@ export default function SidebarRight() {
         <div key={index}>
           <Image
             src={`${url_image}${item.fields.image.fields.file.url}`}
-            alt="stuff"
+            alt="photo"
           />
           <ItemTitle>{item.fields.title}</ItemTitle>
           <ItemCount>
-            Quantity: {item.quantity}{" "}
+            Qty: {item.quantity}{" "}
             <button
               onClick={addQuantity}
               data-id={item.fields.id}
@@ -75,6 +87,13 @@ export default function SidebarRight() {
             >
               -
             </button>
+            <button
+              onClick={deleteItem}
+              data-id={item.fields.id}
+              className="cart-btn"
+            >
+              x
+            </button>
           </ItemCount>
         </div>
       ))}
@@ -87,11 +106,18 @@ export default function SidebarRight() {
         {menuToggles.totalPrice.get === 0 ? (
           <AiOutlineShoppingCart />
         ) : (
-          <div className="cart-total checkout">
-            <NavLink to="/cart" className="special">
-              Checkout
-            </NavLink>
-          </div>
+          <>
+            <div className="cart-total checkout">
+              <NavLink to="/cart" className="special">
+                Checkout
+              </NavLink>
+            </div>
+            <div className="cart-total checkout checkout-top-margin" onClick={clearCart}>
+              <NavLink to="" className="special">
+                clear cart
+              </NavLink>
+            </div>
+          </>
         )}
       </div>
     </RightNavContainer>
