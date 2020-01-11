@@ -5,6 +5,11 @@ import { ErrorAlert } from "../utils/Utils";
 import { findProductById } from "../utils/Utils";
 import { NavLink } from "react-router-dom";
 
+import {
+  AboutHero,
+  AboutFilter
+} from "../components/home_components/HeroComponentStyles";
+
 export default function Single_Product_Page() {
   const param = useParams();
   const [products, , menuToggles] = useContext(DataContext);
@@ -12,6 +17,8 @@ export default function Single_Product_Page() {
 
   const product = findProductById(products, Number(param.id));
   const url_image = "../resources/product-images/img/";
+  const bg_url =
+    "url(../../resources/page-images/images/singleProductBcg.jpeg) center/cover no-repeat;";
 
   const addToCart = event => {
     const id = Number(event.target.dataset.id);
@@ -43,6 +50,9 @@ export default function Single_Product_Page() {
 
   return (
     <div className="product">
+      <AboutHero bg={bg_url}>
+        <AboutFilter />
+      </AboutHero>
       <div className="added-product-in-component">
         {error && ErrorAlert(error)}
       </div>
