@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { DataContext } from "../../context/context";
 import { FaBars, FaShoppingCart } from "react-icons/fa";
 import { Nav, TopTitle, IconMenu } from "./SideBarLeftStyles";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function Navbar() {
   const [, , menuToggles] = useContext(DataContext);
@@ -22,8 +23,16 @@ export default function Navbar() {
       <TopTitle>Awesome Products</TopTitle>
 
       <IconMenu>
-        <FaShoppingCart onClick={rightMenu} />
-        {menuToggles.cart.get.length}
+        {menuToggles.cart.get.length === 0 ? (
+          <div className="cart-total-icon-nav">
+            <AiOutlineShoppingCart onClick={rightMenu} />
+          </div>
+        ) : (
+          <>
+            <FaShoppingCart onClick={rightMenu} />
+            {menuToggles.cart.get.length}
+          </>
+        )}
       </IconMenu>
     </Nav>
   );

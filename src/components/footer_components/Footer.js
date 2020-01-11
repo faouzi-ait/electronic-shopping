@@ -32,17 +32,19 @@ function getCurrentDate(separator = " ") {
 
 export default function Footer() {
   return (
-    <div className="footer-section">
-      <div className="copyright">
-        Reproduced with love, {getCurrentDate()} &copy;
+    <footer>
+      <div className="footer-section">
+        <div className="copyright">
+          Reproduced with love, {getCurrentDate()} &copy;
+        </div>
+        <div className="social-links">
+          <FaFacebookSquare />
+          <FaLinkedin />
+          <FaTumblrSquare />
+          <FaInstagram />
+          <FaTwitter />
+        </div>
       </div>
-      <div className="social-links">
-        <FaFacebookSquare />
-        <FaLinkedin />
-        <FaTumblrSquare />
-        <FaInstagram />
-        <FaTwitter />
-      </div>
-    </div>
+    </footer>
   );
 }

@@ -6,16 +6,13 @@ import ProductComponent from "../components/home_components/ProductComponent";
 import { DataContext } from "../context/context";
 import TitleComponent from "../components/about_components/AboutComponents";
 import ServiceComponent from "../components/home_components/ServiceComponent";
+import { getFeaturedProducts } from "../utils/Utils";
 import classnames from "classnames";
 
 export default function Home_Page() {
   const [products, ,] = useContext(DataContext);
   const bg_url =
     "url(../../resources/page-images/images/mainBcg.jpeg) center/cover no-repeat;";
-
-  const getFeaturedProducts = array => {
-    return array.filter(item => item.fields.featured === true);
-  };
 
   return (
     <div className="home">

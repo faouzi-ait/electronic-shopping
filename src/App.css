@@ -28,6 +28,10 @@ body {
   padding-top: 4rem;
 }
 
+footer {
+  z-index: 99999;
+}
+
 .default {
   min-height: 93vh;
 }
@@ -94,7 +98,6 @@ a.primary-button:hover {
   min-height: 7vh;
   color: var(--mainwhite);
   background: var(--darkgrey);
-  z-index: 9999;
 }
 
 .copyright {
@@ -232,22 +235,11 @@ textarea:focus {
   font-style: italic;
 }
 
-.showConfirmation {
-  width: 100%;
-  font-size: 1.4rem;
-  color: var(--mainwhite);
-  background: red;
-  padding: 10px 15px;
-  letter-spacing: 1.5px;
-  text-align: center;
-  border-radius: 3px;
-}
-
 .showError {
   width: 100%;
   font-size: 1.4rem;
   color: var(--mainwhite);
-  background: red;
+  background: rgb(196, 134, 134);
   padding: 10px 15px;
   letter-spacing: 1.5px;
   text-align: center;
@@ -258,7 +250,7 @@ textarea:focus {
   width: 25%;
   margin: 0.5rem auto !important;
   padding: 3px;
-  border: 1px solid red;
+  border: 1px solid rgb(196, 134, 134);
   border-radius: 3px;
 }
 
@@ -266,7 +258,7 @@ textarea:focus {
   width: 100%;
   font-size: 1.4rem;
   color: var(--mainwhite);
-  background: rgb(0, 172, 0);
+  background: rgb(59, 155, 59);
   padding: 10px 15px;
   letter-spacing: 1.5px;
   text-align: center;
@@ -277,7 +269,7 @@ textarea:focus {
   width: 45%;
   margin: 0.5rem auto !important;
   padding: 3px;
-  border: 1px solid rgb(0, 172, 0);
+  border: 1px solid rgb(59, 155, 59);
   border-radius: 3px;
 }
 
@@ -365,8 +357,25 @@ textarea:focus {
   padding-top: 1rem;
 }
 
-@media screen and (min-width: 800px) {
+.feature-title,
+.feature-price {
+  letter-spacing: 1px;
+  font-size: 1.25rem;
+}
 
+.feature-title {
+  font-weight: 800;
+}
+
+.feature-price::before {
+  content: '€'
+}
+
+.feature-title::first-letter {
+  text-transform: uppercase;
+}
+
+@media screen and (min-width: 800px) {
   .product-section {
     padding: 0em 2rem 2rem 2rem;
   }
@@ -543,4 +552,80 @@ textarea:focus {
 .product-border {
   margin-top: -1rem;
   border-top: 3px solid var(--primary)
+}
+
+.cart-btn {
+  display: inline-block;
+  font-size: 1.3rem;
+  margin: 0 3px;
+  width: 2rem;
+  border-radius: 3px;
+  outline: none;
+}
+
+.cart-total {
+  margin-top: 1.7rem;
+  text-align: center;
+  letter-spacing: 2px;
+  font-size: 1.3rem;
+}
+
+.checkout,
+.checkout a {
+  width: 40%;
+  font-size: 1rem;
+  padding: 5px;
+  margin: .7rem auto;
+  margin-top: 2rem !important;
+  color: var(--mainwhite);
+  text-transform: uppercase;
+  background: var(--primary) !important;
+  border: 2px solid var(--primary);
+  border-radius: 3px;
+  transition: var(--maintransition);
+}
+
+.added-product-in-component {
+  position: fixed;
+  top: 15%;
+  left: 10%;
+  width: 80%;
+  transition: translate(-50%, -50%);
+  z-index: 9999;
+}
+
+.special {
+  color: var(--mainwhite) !important;
+  text-decoration: none !important;
+  border: none !important;
+}
+
+@media screen and (min-width: 900px) {
+  .checkout {
+    width: 100%;
+  }
+}
+
+.special:hover {
+  color: var(--primary) !important;
+  background: var(--mainwhite) !important;
+}
+
+.checkout:hover {
+  cursor: pointer;
+  color: var(--primary) !important;
+  background: var(--mainwhite) !important;
+  border: 2px solid var(--primary);
+}
+
+.checkout:hover .special {
+  color: var(--primary) !important;
+  cursor: pointer;
+  background: var(--mainwhite) !important;
+}
+
+.cart-total-icon {
+  color: var(--primary);
+  font-size: 5rem;
+  margin-top: -1.5rem
 }

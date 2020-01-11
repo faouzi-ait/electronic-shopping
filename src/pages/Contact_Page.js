@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { ErrorAlert, ConfirmationAlert } from "../utils/Utils";
 import { setTimeout } from "timers";
 import {
   AboutHero,
@@ -86,21 +87,9 @@ export default function Contact_Page() {
         <AboutFilter />
       </AboutHero>
       <div className="contact-form">
-        {error && (
-          <div className="errorBorder">
-            <div className="showError">
-              <span>{error}</span>
-            </div>
-          </div>
-        )}
+        {error && ErrorAlert(error)}
 
-        {confirmation && (
-          <div className="confirmationBorder">
-            <div className="showConfirmation">
-              <span>{confirmation}</span>
-            </div>
-          </div>
-        )}
+        {confirmation && ConfirmationAlert(confirmation)}
         <div className="contact-title">
           <p>Contact</p>
           <div className="contact-border"></div>

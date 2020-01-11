@@ -1,34 +1,48 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { DataContext } from "../../context/context";
 import { NavLink } from "react-router-dom";
-import { FaShoppingCart, FaSearch } from "react-icons/fa";
+import { findProductById } from "../../utils/Utils";
+import { FaSearch } from "react-icons/fa";
+import { ErrorAlert, ConfirmationAlert } from "../../utils/Utils";
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function ProductComponent({ featuredProducts }) {
+  const [error, setError] = useState("");
   const [products, , menuToggles] = useContext(DataContext);
   const url_image = "./resources/product-images/img/";
 
-  const findProductById = (array, id) => {
-    return array.find(item => item.fields.id === id);
+  const removeErrorMsg = _ => {
+    setTimeout(() => {
+      setError("");
+    }, 3000);
   };
-
   const addToCart = event => {
     const id = Number(event.target.dataset.id);
     const selectedProduct = findProductById(products, id);
     const isProductAdded = findProductById(menuToggles.cart.get, id);
 
     if (isProductAdded !== undefined) {
-      alert(`This product was already added...`);
+      setError(`This product was already added`);
+      removeErrorMsg();
       return;
     }
 
     if (selectedProduct) {
-      const cart = [...menuToggles.cart.get, selectedProduct];
+      const addedProduct = {
+        ...selectedProduct,
+        quantity: 1,
+        total: selectedProduct.fields.price
+      };
+      const cart = [...menuToggles.cart.get, addedProduct];
       menuToggles.cart.set(cart);
     }
   };
 
+  console.log(menuToggles.cart.get);
+
   return (
     <>
+      <div className="added-product-in-component">{error && ErrorAlert(error)}</div>
       {featuredProducts.map((item, index) => (
         <>
           <div className="feature-section-box" key={index}>
@@ -47,7 +61,7 @@ function ProductComponent({ featuredProducts }) {
                 onClick={addToCart}
                 data-id={item.fields.id}
               >
-                <FaShoppingCart
+                <AiOutlineShoppingCart
                   onClick={addToCart}
                   data-id={item.fields.id}
                   className="cart"

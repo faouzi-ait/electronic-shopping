@@ -9,16 +9,18 @@ export const DataProvider = props => {
   const [sideRight, setSideRight] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
   const [totalCartItems, setTotalCartItems] = useState(0);
-  const [itemQuantity, setItemQuantity] = useState(0);
-  const [isSelected, setIsSelected] = useState([]);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const [tax, setTax] = useState(15);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const menuToggles = {
     left: { get: sideLeft, set: setSideLeft },
     right: { get: sideRight, set: setSideRight },
     totalItems: { get: totalCartItems, set: setTotalCartItems },
     cart: { get: shoppingCart, set: setShoppingCart },
-    quantity: { get: itemQuantity, set: setItemQuantity },
-    selected: { get: isSelected, set: setIsSelected }
+    totalPrice: { get: totalPrice, set: setTotalPrice },
+    tax: { get: tax, set: setTax },
+    selected: { get: selectedItems, set: setSelectedItems }
   };
 
   return (

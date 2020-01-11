@@ -6,5 +6,5 @@ export default function Single_Product_Page() {
 
   console.log(Number(param.id));
 
-  return <div className="product">SingleProduct Page</div>;
+  return <div className="product">SingleProduct Page: Coming Soon</div>;
 }
