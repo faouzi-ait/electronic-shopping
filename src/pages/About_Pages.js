@@ -1,5 +1,6 @@
-import React from "react";
-import { NavLink } from "react-router-dom";
+import React, { useContext } from "react";
+import { DataContext } from "../context/context";
+import Overlay from "../components/overlay/Overlay";
 
 import {
   AboutContainer,
@@ -14,8 +15,13 @@ import {
 import TitleComponent from "../components/about_components/AboutComponents";
 
 export default function About_Pages() {
+  const [, , menuToggles] = useContext(DataContext);
   const bg_url =
     "url(../../resources/page-images/images/aboutBcg.jpeg) center/cover no-repeat;";
+
+  const openOverlay = _ => {
+    menuToggles.overlay.set(true);
+  };
 
   return (
     <div className="about">
@@ -40,13 +46,18 @@ export default function About_Pages() {
           </div>
           <div className="about-button">
             <div className="primary-button-container">
-              <NavLink to="/products" className="primary-button more-info">
+              <a
+                href="#"
+                className="primary-button more-info"
+                onClick={openOverlay}
+              >
                 More Info
-              </NavLink>
+              </a>
             </div>
           </div>
         </div>
       </AboutContainer>
+      <Overlay />
     </div>
   );
 }

@@ -170,6 +170,53 @@ a.primary-button:hover {
   padding-top: 1rem !important;
 }
 
+.overlay-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: center;
+  align-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.350);
+}
+
+.overlay {
+  width: 30%;
+  height: 20rem;
+  border-radius: 3px;
+  background: var(--mainwhite);
+}
+
+.overlay-close-button {
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-items: right;
+  padding: 10px
+}
+
+.overlay-content {
+  padding: 0 1rem;
+}
+
+.close-button {
+  padding: 5px 10px;
+  background: #ccc;
+  border-radius: 3px;
+  cursor: pointer;
+  font-weight: bolder;
+  border: 1px solid #ccc;
+  transition: var(--maintransition);
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background: #fff;
+  border: 1px solid #ccc;
+}
+
 .more-info {
   text-transform: uppercase;
   letter-spacing: 2px;
