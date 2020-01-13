@@ -17,8 +17,6 @@ function ProductComponent({ featuredProducts }) {
     }, 3000);
   };
 
-  console.log(methods);
-
   const addItem = e => {
     const id = Number(e.target.dataset.id);
     const isProductAdded = findProductById(menuToggles.cart.get, id);
@@ -30,8 +28,6 @@ function ProductComponent({ featuredProducts }) {
       methods.addToCart(id);
     }
   };
-
-  console.log(menuToggles.cart.get);
 
   return (
     <>

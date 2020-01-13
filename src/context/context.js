@@ -10,6 +10,7 @@ export const DataProvider = props => {
   const [openOverlay, setOpenOverlay] = useState(false);
   const [sideRight, setSideRight] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [qty, setQty] = useState(0);
   const [totalCartItems, setTotalCartItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [tax, setTax] = useState(15);
@@ -37,10 +38,17 @@ export const DataProvider = props => {
           quantity: 1,
           total: selectedProduct.fields.price
         };
-        
+
         const cart = [...menuToggles.cart.get, addedProduct];
         menuToggles.cart.set(cart);
       }
+    },
+    total: _ => {
+      const tt = menuToggles.cart.get
+        .map(item => item.total)
+        .reduce((a, b) => a + b, 0);
+
+      menuToggles.totalPrice.set(tt);
     }
   };
 

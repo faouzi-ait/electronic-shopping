@@ -7,7 +7,7 @@ import { Image, ItemTitle, ItemCount } from "./SidebarRightStyles";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function SidebarRight() {
-  const [, , menuToggles] = useContext(DataContext);
+  const [, , menuToggles, methods] = useContext(DataContext);
   const [qty, setQty] = useState(1);
   const url_image = "./resources/product-images/img/";
 
@@ -16,9 +16,10 @@ export default function SidebarRight() {
   const addQuantity = e => {
     const id = Number(e.target.dataset.id);
     const product = findProductById(menuToggles.cart.get, id);
+    product.quantity = product.quantity + 1;
 
-    product.total = qty * product.fields.price;
-    setQty((product.quantity = product.quantity + 1));
+    product.total = product.quantity * product.fields.price;
+    methods.total();
   };
 
   const minusQuantity = e => {
@@ -28,16 +29,17 @@ export default function SidebarRight() {
     if (product.quantity === 0) {
       const newCart = menuToggles.cart.get.filter(item => item.quantity !== 0);
       menuToggles.cart.set(newCart);
-      total();
     }
 
     if (product.quantity >= 1) {
       product.quantity = product.quantity - 1;
-      product.total = qty * product.fields.price;
-      setQty(product.quantity);
-      total();
+      product.total = product.quantity * product.fields.price;
+      methods.total();
     }
-    total();
+
+    if (product.quantity === 0) {
+      deleteItem(e);
+    }
   };
 
   const deleteItem = e => {
@@ -45,7 +47,6 @@ export default function SidebarRight() {
     const newCart = menuToggles.cart.get.filter(item => item.fields.id !== id);
 
     menuToggles.cart.set(newCart);
-    total();
   };
 
   const clearCart = _ => {
@@ -59,8 +60,6 @@ export default function SidebarRight() {
 
     menuToggles.totalPrice.set(tt);
   };
-
-  total();
 
   return (
     <RightNavContainer>
