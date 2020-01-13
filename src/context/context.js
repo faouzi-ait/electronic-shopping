@@ -1,4 +1,5 @@
-import React, { useState, createContext } from "react";
+import React, { useState, useEffect, createContext } from "react";
+import { findProductById } from "../utils/Utils";
 import items from "./productData";
 
 export const DataContext = createContext();
@@ -25,8 +26,26 @@ export const DataProvider = props => {
     selected: { get: selectedItems, set: setSelectedItems }
   };
 
+  const methods = {
+    addToCart: input => {
+      const id = Number(input);
+      const selectedProduct = findProductById(products, id);
+
+      if (selectedProduct) {
+        const addedProduct = {
+          ...selectedProduct,
+          quantity: 1,
+          total: selectedProduct.fields.price
+        };
+        
+        const cart = [...menuToggles.cart.get, addedProduct];
+        menuToggles.cart.set(cart);
+      }
+    }
+  };
+
   return (
-    <DataContext.Provider value={[products, setProducts, menuToggles]}>
+    <DataContext.Provider value={[products, setProducts, menuToggles, methods]}>
       {props.children}
     </DataContext.Provider>
   );

@@ -757,3 +757,23 @@ textarea:focus {
 .checkout-top-margin {
   margin-top: -.4rem !important;
 }
+
+.cart-items {
+  display: flex;
+  flex-flow: column
+}
+
+.cart-items-headers {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  justify-items: center;
+  margin-top: 2rem;
+  font-size: .85rem;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 800px) {
+  .cart-items-headers {
+    margin-top: 5rem;
+  }
+}

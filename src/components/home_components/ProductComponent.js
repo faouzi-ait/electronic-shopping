@@ -8,7 +8,7 @@ import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function ProductComponent({ featuredProducts }) {
   const [error, setError] = useState("");
-  const [products, , menuToggles] = useContext(DataContext);
+  const [, , menuToggles, methods] = useContext(DataContext);
   const url_image = "./resources/product-images/img/";
 
   const removeErrorMsg = _ => {
@@ -17,25 +17,17 @@ function ProductComponent({ featuredProducts }) {
     }, 3000);
   };
 
-  const addToCart = event => {
-    const id = Number(event.target.dataset.id);
-    const selectedProduct = findProductById(products, id);
+  console.log(methods);
+
+  const addItem = e => {
+    const id = Number(e.target.dataset.id);
     const isProductAdded = findProductById(menuToggles.cart.get, id);
 
     if (isProductAdded !== undefined) {
       setError(`Product already added`);
       removeErrorMsg();
-      return;
-    }
-
-    if (selectedProduct) {
-      const addedProduct = {
-        ...selectedProduct,
-        quantity: 1,
-        total: selectedProduct.fields.price
-      };
-      const cart = [...menuToggles.cart.get, addedProduct];
-      menuToggles.cart.set(cart);
+    } else {
+      methods.addToCart(id);
     }
   };
 
@@ -61,11 +53,11 @@ function ProductComponent({ featuredProducts }) {
             <div className="feature-overlay">
               <div
                 className="feature-details"
-                onClick={addToCart}
+                onClick={addItem}
                 data-id={item.fields.id}
               >
                 <AiOutlineShoppingCart
-                  onClick={addToCart}
+                  onClick={addItem}
                   data-id={item.fields.id}
                   className="cart"
                 />

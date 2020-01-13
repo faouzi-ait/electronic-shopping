@@ -18,6 +18,14 @@ export const AboutHero = Styled.header`
    justify-content: center;
 `;
 
+export const CartHero = Styled.header`
+   min-height: 50vh;
+   background: ${props => props.bg};
+   display: flex;
+   align-items: center;
+   justify-content: center;
+`;
+
 export const AboutFilter = Styled.div`
    min-height: 50vh;
    width: 100vw;

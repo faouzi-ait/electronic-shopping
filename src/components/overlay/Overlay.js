@@ -19,7 +19,7 @@ function Overlay() {
               </p>
             </div>
             <div className="overlay-content">
-              Overlay window of the about section for some UI interactive
+              Overlay window in the about section for some UI interactive
               effects and content.
             </div>
           </div>
