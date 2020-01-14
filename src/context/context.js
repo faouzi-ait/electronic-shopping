@@ -19,11 +19,6 @@ export const DataProvider = props => {
     left: { get: sideLeft, set: setSideLeft },
     right: { get: sideRight, set: setSideRight },
     overlay: { get: openOverlay, set: setOpenOverlay }
-    // totalItems: { get: totalCartItems, set: setTotalCartItems },
-    // cart: { get: shoppingCart, set: setShoppingCart },
-    // totalPrice: { get: totalPrice, set: setTotalPrice },
-    // tax: { get: tax, set: setTax },
-    // selected: { get: selectedItems, set: setSelectedItems }
   };
 
   const cartItems = {
@@ -53,9 +48,7 @@ export const DataProvider = props => {
       const product = findProductById(cartItems.cart.get, id);
 
       if (product.quantity === 0) {
-        const newCart = cartItems.cart.get.filter(
-          item => item.quantity !== 0
-        );
+        const newCart = cartItems.cart.get.filter(item => item.quantity !== 0);
         cartItems.cart.set(newCart);
       }
 
@@ -70,9 +63,7 @@ export const DataProvider = props => {
       }
     },
     removeFromCart: id => {
-      const newCart = cartItems.cart.get.filter(
-        item => item.fields.id !== id
-      );
+      const newCart = cartItems.cart.get.filter(item => item.fields.id !== id);
       cartItems.cart.set(newCart);
     },
     clearCart: _ => {
@@ -90,7 +81,9 @@ export const DataProvider = props => {
   };
 
   return (
-    <DataContext.Provider value={[products, setProducts, menuToggles, methods, cartItems]}>
+    <DataContext.Provider
+      value={[products, setProducts, menuToggles, methods, cartItems]}
+    >
       {props.children}
     </DataContext.Provider>
   );

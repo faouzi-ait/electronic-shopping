@@ -480,14 +480,18 @@ textarea:focus {
   width: 35%;
   margin: 0 auto;
   padding: 0;
+  color: var(--primary);
   font-size: 2rem;
   cursor: pointer;
-  color: var(--primary);
 }
 
-.feature-addtocart,
-.cart {
+.feature-addtocart {
+  display: inline-block;
   font-size: 3rem;
+}
+
+.feature-addtocart:first-child {
+  margin-right: 1rem;
 }
 
 .feature-details:hover,

@@ -4,7 +4,6 @@ import { NavLink } from "react-router-dom";
 import { findProductById } from "../../utils/Utils";
 import { FaSearch } from "react-icons/fa";
 import { ErrorAlert } from "../../utils/Utils";
-import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function ProductComponent({ featuredProducts }) {
   const [, , , methods, cartItems] = useContext(DataContext);
@@ -48,15 +47,15 @@ function ProductComponent({ featuredProducts }) {
             <div className="feature-price">{item.fields.price}</div>
             <div className="feature-overlay">
               <div
-                className="feature-details"
+                className="feature-addtocart"
                 onClick={addItem}
                 data-id={item.fields.id}
               >
-                <AiOutlineShoppingCart
+                <i
+                  className="fa fa-shopping-cart fa-1x"
                   onClick={addItem}
                   data-id={item.fields.id}
-                  className="cart"
-                />
+                ></i>
               </div>
               <div className="feature-addtocart">
                 <NavLink to={`/product/${item.fields.id}`}>
