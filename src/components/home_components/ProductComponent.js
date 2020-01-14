@@ -46,11 +46,7 @@ function ProductComponent({ featuredProducts }) {
             <div className="feature-title">{item.fields.title}</div>
             <div className="feature-price">{item.fields.price}</div>
             <div className="feature-overlay">
-              <div
-                className="feature-addtocart"
-                onClick={addItem}
-                data-id={item.fields.id}
-              >
+              <div className="feature-addtocart">
                 <i
                   className="fa fa-shopping-cart fa-1x"
                   onClick={addItem}

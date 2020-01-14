@@ -456,7 +456,9 @@ textarea:focus {
 }
 
 .feature-section-box:hover .feature-overlay {
-  display: block;
+  display: grid;
+  justify-content: center;
+  align-items: center;
 }
 
 .feature-overlay {
@@ -488,10 +490,6 @@ textarea:focus {
 .feature-addtocart {
   display: inline-block;
   font-size: 3rem;
-}
-
-.feature-addtocart:first-child {
-  margin-right: 1rem;
 }
 
 .feature-details:hover,
