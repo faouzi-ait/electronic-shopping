@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import ProductComponent from "../components/home_components/ProductComponent";
 import { DataContext } from "../context/context";
 
-export default function Product_List_Page() {
+const Product_List_Page = _ => {
   const [products, ,] = useContext(DataContext);
 
   return (
@@ -17,4 +17,6 @@ export default function Product_List_Page() {
       </div>
     </>
   );
-}
+};
+
+export default Product_List_Page;

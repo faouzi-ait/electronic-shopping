@@ -7,8 +7,8 @@ import { ErrorAlert } from "../../utils/Utils";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 function ProductComponent({ featuredProducts }) {
+  const [, , , methods, cartItems] = useContext(DataContext);
   const [error, setError] = useState("");
-  const [, , menuToggles, methods] = useContext(DataContext);
   const url_image = "./resources/product-images/img/";
 
   const removeErrorMsg = _ => {
@@ -19,7 +19,7 @@ function ProductComponent({ featuredProducts }) {
 
   const addItem = e => {
     const id = Number(e.target.dataset.id);
-    const isProductAdded = findProductById(menuToggles.cart.get, id);
+    const isProductAdded = findProductById(cartItems.cart.get, id);
 
     if (isProductAdded !== undefined) {
       setError(`Product already added`);

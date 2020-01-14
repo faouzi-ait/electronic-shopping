@@ -767,13 +767,16 @@ textarea:focus {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-items: center;
-  margin-top: 2rem;
   font-size: .85rem;
   text-transform: uppercase;
 }
 
+.cart-items-headers:first-child {
+  margin-top: 2rem;
+}
+
 @media screen and (max-width: 800px) {
-  .cart-items-headers {
-    margin-top: 5rem;
+  .cart-items-headers:first-child {
+    margin-top: 3.5rem;
   }
 }

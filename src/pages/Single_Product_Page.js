@@ -11,7 +11,7 @@ import {
 
 export default function Single_Product_Page() {
   const param = useParams();
-  const [products, , menuToggles] = useContext(DataContext);
+  const [products, , , methods, cartItems] = useContext(DataContext);
   const [error, setError] = useState("");
 
   const product = findProductById(products, Number(param.id));
@@ -19,25 +19,15 @@ export default function Single_Product_Page() {
   const bg_url =
     "url(../../resources/page-images/images/singleProductBcg.jpeg) center/cover no-repeat;";
 
-  const addToCart = event => {
-    const id = Number(event.target.dataset.id);
-    const selectedProduct = findProductById(products, id);
-    const isProductAdded = findProductById(menuToggles.cart.get, id);
+  const addItem = e => {
+    const id = Number(e.target.dataset.id);
+    const isProductAdded = findProductById(cartItems.cart.get, id);
 
     if (isProductAdded !== undefined) {
       setError(`Product already added`);
       removeErrorMsg();
-      return;
-    }
-
-    if (selectedProduct) {
-      const addedProduct = {
-        ...selectedProduct,
-        quantity: 1,
-        total: selectedProduct.fields.price
-      };
-      const cart = [...menuToggles.cart.get, addedProduct];
-      menuToggles.cart.set(cart);
+    } else {
+      methods.addToCart(id);
     }
   };
 
@@ -91,7 +81,7 @@ export default function Single_Product_Page() {
               <NavLink
                 to={`/product/${product.fields.id}`}
                 className="primary-button fullwidth"
-                onClick={addToCart}
+                onClick={addItem}
                 data-id={product.fields.id}
               >
                 add to cart

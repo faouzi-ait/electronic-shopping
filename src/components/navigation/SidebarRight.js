@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useEffect, useContext } from "react";
 import { DataContext } from "../../context/context";
 import { RightNavContainer } from "./SidebarRightStyles";
 import { findProductById } from "../../utils/Utils";
@@ -7,63 +7,33 @@ import { Image, ItemTitle, ItemCount } from "./SidebarRightStyles";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function SidebarRight() {
-  const [, , menuToggles, methods] = useContext(DataContext);
-  const [qty, setQty] = useState(1);
+  const [, , , methods, cartItems] = useContext(DataContext);
   const url_image = "./resources/product-images/img/";
 
-  useEffect(_ => total());
+  useEffect(_ => methods.total());
 
   const addQuantity = e => {
     const id = Number(e.target.dataset.id);
-    const product = findProductById(menuToggles.cart.get, id);
-    product.quantity = product.quantity + 1;
+    const product = findProductById(cartItems.cart.get, id);
 
+    product.quantity = product.quantity + 1;
     product.total = product.quantity * product.fields.price;
     methods.total();
   };
 
   const minusQuantity = e => {
     const id = Number(e.target.dataset.id);
-    const product = findProductById(menuToggles.cart.get, id);
-
-    if (product.quantity === 0) {
-      const newCart = menuToggles.cart.get.filter(item => item.quantity !== 0);
-      menuToggles.cart.set(newCart);
-    }
-
-    if (product.quantity >= 1) {
-      product.quantity = product.quantity - 1;
-      product.total = product.quantity * product.fields.price;
-      methods.total();
-    }
-
-    if (product.quantity === 0) {
-      deleteItem(e);
-    }
+    methods.minusQuantity(id);
   };
 
   const deleteItem = e => {
     const id = Number(e.target.dataset.id);
-    const newCart = menuToggles.cart.get.filter(item => item.fields.id !== id);
-
-    menuToggles.cart.set(newCart);
-  };
-
-  const clearCart = _ => {
-    menuToggles.cart.set([]);
-  };
-
-  const total = _ => {
-    const tt = menuToggles.cart.get
-      .map(item => item.total)
-      .reduce((a, b) => a + b, 0);
-
-    menuToggles.totalPrice.set(tt);
+    methods.removeFromCart(id);
   };
 
   return (
     <RightNavContainer>
-      {menuToggles.cart.get.map((item, index) => (
+      {cartItems.cart.get.map((item, index) => (
         <div key={index}>
           <Image
             src={`${url_image}${item.fields.image.fields.file.url}`}
@@ -97,12 +67,12 @@ export default function SidebarRight() {
         </div>
       ))}
       <div className="cart-total">
-        {menuToggles.totalPrice.get !== 0
-          ? `Total: €${menuToggles.totalPrice.get}`
+        {cartItems.totalPrice.get !== 0
+          ? `Total: €${cartItems.totalPrice.get}`
           : `Your shopping cart is empty`}
       </div>
       <div className="cart-total cart-total-icon">
-        {menuToggles.totalPrice.get === 0 ? (
+        {cartItems.totalPrice.get === 0 ? (
           <AiOutlineShoppingCart />
         ) : (
           <>
@@ -113,7 +83,7 @@ export default function SidebarRight() {
             </div>
             <div
               className="cart-total checkout checkout-top-margin"
-              onClick={clearCart}
+              onClick={methods.clearCart}
             >
               <a href="#" className="special">
                 clear cart

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, createContext } from "react";
 import { findProductById } from "../utils/Utils";
 import items from "./productData";
 
@@ -10,7 +10,6 @@ export const DataProvider = props => {
   const [openOverlay, setOpenOverlay] = useState(false);
   const [sideRight, setSideRight] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
-  const [qty, setQty] = useState(0);
   const [totalCartItems, setTotalCartItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [tax, setTax] = useState(15);
@@ -19,7 +18,15 @@ export const DataProvider = props => {
   const menuToggles = {
     left: { get: sideLeft, set: setSideLeft },
     right: { get: sideRight, set: setSideRight },
-    overlay: { get: openOverlay, set: setOpenOverlay },
+    overlay: { get: openOverlay, set: setOpenOverlay }
+    // totalItems: { get: totalCartItems, set: setTotalCartItems },
+    // cart: { get: shoppingCart, set: setShoppingCart },
+    // totalPrice: { get: totalPrice, set: setTotalPrice },
+    // tax: { get: tax, set: setTax },
+    // selected: { get: selectedItems, set: setSelectedItems }
+  };
+
+  const cartItems = {
     totalItems: { get: totalCartItems, set: setTotalCartItems },
     cart: { get: shoppingCart, set: setShoppingCart },
     totalPrice: { get: totalPrice, set: setTotalPrice },
@@ -28,9 +35,8 @@ export const DataProvider = props => {
   };
 
   const methods = {
-    addToCart: input => {
-      const id = Number(input);
-      const selectedProduct = findProductById(products, id);
+    addToCart: id => {
+      const selectedProduct = findProductById(products, Number(id));
 
       if (selectedProduct) {
         const addedProduct = {
@@ -39,21 +45,52 @@ export const DataProvider = props => {
           total: selectedProduct.fields.price
         };
 
-        const cart = [...menuToggles.cart.get, addedProduct];
-        menuToggles.cart.set(cart);
+        const cart = [...cartItems.cart.get, addedProduct];
+        cartItems.cart.set(cart);
       }
     },
+    minusQuantity: id => {
+      const product = findProductById(cartItems.cart.get, id);
+
+      if (product.quantity === 0) {
+        const newCart = cartItems.cart.get.filter(
+          item => item.quantity !== 0
+        );
+        cartItems.cart.set(newCart);
+      }
+
+      if (product.quantity >= 1) {
+        product.quantity = product.quantity - 1;
+        product.total = product.quantity * product.fields.price;
+        methods.total();
+      }
+
+      if (product.quantity === 0) {
+        methods.removeFromCart(id);
+      }
+    },
+    removeFromCart: id => {
+      const newCart = cartItems.cart.get.filter(
+        item => item.fields.id !== id
+      );
+      cartItems.cart.set(newCart);
+    },
+    clearCart: _ => {
+      cartItems.cart.set([]);
+    },
     total: _ => {
-      const tt = menuToggles.cart.get
+      const tt = cartItems.cart.get
         .map(item => item.total)
         .reduce((a, b) => a + b, 0);
-
-      menuToggles.totalPrice.set(tt);
+      cartItems.totalPrice.set(tt);
+    },
+    taxAmount: total => {
+      return (total * tax) / 100;
     }
   };
 
   return (
-    <DataContext.Provider value={[products, setProducts, menuToggles, methods]}>
+    <DataContext.Provider value={[products, setProducts, menuToggles, methods, cartItems]}>
       {props.children}
     </DataContext.Provider>
   );

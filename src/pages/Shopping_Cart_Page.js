@@ -6,12 +6,13 @@ import {
 } from "../components/home_components/HeroComponentStyles";
 
 export default function Shopping_Cart_Page() {
-  const [, , menuToggles] = useContext(DataContext);
+  const [, , , methods, cartItems] = useContext(DataContext);
   const bg_url =
     "url(../../resources/page-images/images/storeBcg.jpeg) center/cover no-repeat;";
 
-  console.log(menuToggles.cart.get);
-  console.log(menuToggles.totalPrice.get);
+  const totalAftertax =
+    methods.taxAmount(cartItems.totalPrice.get) + cartItems.totalPrice.get;
+
   return (
     <div className="shopping">
       {" "}
@@ -24,18 +25,32 @@ export default function Shopping_Cart_Page() {
       </div>
       <div className="cart-items-section">
         <div className="cart-items">
-          <div className="cart-items-headers">
-            <div>products</div>
-            <div>name of product</div>
-            <div>price</div>
-            <div>quantity</div>
-            <div>remove</div>
-            <div>total</div>
+          {cartItems.totalPrice.get ? (
+            <div className="cart-items-headers">
+              <div>products</div>
+              <div>item</div>
+              <div>price</div>
+              <div>quantity</div>
+              <div>remove</div>
+              <div>total</div>
+            </div>
+          ) : (
+            ""
+          )}
+          <div className="cart-items-headers cart-items-list">
+            {/* SHOPPING CART LISTING HERE */}
           </div>
-          <div className="cart-items-list">
-
+          <div className="cart-total">
+            {cartItems.totalPrice.get ? (
+              <>
+                <p>Subtotal : ${cartItems.totalPrice.get}</p>
+                <p>Tax : ${methods.taxAmount(cartItems.totalPrice.get)}</p>
+                <p>Total : ${totalAftertax}</p>
+              </>
+            ) : (
+              "No items in your cart"
+            )}
           </div>
-
         </div>
       </div>
     </div>

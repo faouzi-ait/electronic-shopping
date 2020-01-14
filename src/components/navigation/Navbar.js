@@ -5,7 +5,7 @@ import { Nav, TopTitle, IconMenu } from "./SideBarLeftStyles";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function Navbar() {
-  const [, , menuToggles] = useContext(DataContext);
+  const [, , menuToggles, , cartItems] = useContext(DataContext);
 
   const leftMenu = e => {
     menuToggles.left.set(value => (value = !value));
@@ -23,14 +23,14 @@ export default function Navbar() {
       <TopTitle>Awesome Products</TopTitle>
 
       <IconMenu>
-        {menuToggles.cart.get.length === 0 ? (
+        {cartItems.cart.get.length === 0 ? (
           <div className="cart-total-icon-nav">
             <AiOutlineShoppingCart onClick={rightMenu} />
           </div>
         ) : (
           <>
             <FaShoppingCart onClick={rightMenu} />
-            {menuToggles.cart.get.length}
+            {cartItems.cart.get.length}
           </>
         )}
       </IconMenu>
