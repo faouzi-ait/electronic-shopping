@@ -39,7 +39,9 @@ export default function SidebarRight() {
             src={`${url_image}${item.fields.image.fields.file.url}`}
             alt="photo"
           />
-          <ItemTitle>{item.fields.title}</ItemTitle>
+          <NavLink to={`/product/${item.fields.id}`}>
+            <ItemTitle>{item.fields.title}</ItemTitle>
+          </NavLink>
           <ItemCount>
             Qty: {item.quantity}{" "}
             <button

@@ -2,9 +2,9 @@ import styled from "styled-components";
 
 export const RightNavContainer = styled.div`
   position: fixed;
-  top: 4.1rem;
+  top: 5rem;
   width: 30%;
-  height: 100vh;
+  height: 100%;
   right: 0;
   background: #fff;
   padding: 1.5rem;

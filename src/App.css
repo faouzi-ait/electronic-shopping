@@ -57,6 +57,20 @@ footer {
   transition: var(--maintransition);
 }
 
+.home-icon {
+  font-size: 2rem;
+}
+
+.home-link,
+.home-link:hover {
+  color: #222;
+  text-decoration: none;
+}
+
+.cart-total-icon-nav {
+  font-size: 2rem;
+}
+
 .active {
   padding-left: 10px;
   border-left: 1.2rem solid #5fb7ea;
@@ -693,6 +707,14 @@ textarea:focus {
   width: 2rem;
   border-radius: 3px;
   outline: none;
+  color: #5f5e5e;
+  border: 1px solid #ccc;
+  background: #fff;
+}
+
+.cart-btn:hover {
+  color: #000;
+  border: 1px solid #000;
 }
 
 .cart-total {
