@@ -4,7 +4,7 @@ export const RightNavContainer = styled.div`
   position: fixed;
   top: 4.1rem;
   width: 30%;
-  height: 100%;
+  height: 100vh;
   right: 0;
   background: #fff;
   padding: 1.5rem;

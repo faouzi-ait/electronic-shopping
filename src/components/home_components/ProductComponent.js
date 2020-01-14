@@ -2,7 +2,6 @@ import React, { useState, useContext } from "react";
 import { DataContext } from "../../context/context";
 import { NavLink } from "react-router-dom";
 import { findProductById } from "../../utils/Utils";
-import { FaSearch } from "react-icons/fa";
 import { ErrorAlert } from "../../utils/Utils";
 
 function ProductComponent({ featuredProducts }) {
@@ -55,7 +54,7 @@ function ProductComponent({ featuredProducts }) {
               </div>
               <div className="feature-addtocart">
                 <NavLink to={`/product/${item.fields.id}`}>
-                  <FaSearch data-id={item.fields.id} />
+                  <i class="fa fa-search"></i>
                 </NavLink>
               </div>
             </div>
