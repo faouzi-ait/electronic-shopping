@@ -82,7 +82,7 @@ const Product_List_Page = _ => {
         ))}
         <div className="range-style">
           <label htmlFor="range" className="filter-item-name">
-            Price Range: €{rangeValue ? rangeValue : min}
+            €{rangeValue ? rangeValue : min}
           </label>
           <input
             type="range"
