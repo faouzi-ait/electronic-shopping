@@ -10,6 +10,8 @@ export const DataProvider = props => {
   const [openOverlay, setOpenOverlay] = useState(false);
   const [sideRight, setSideRight] = useState(false);
   const [shoppingCart, setShoppingCart] = useState([]);
+  const [brands, setBrands] = useState([]);
+  const [filteredList, setFilteredList] = useState([]);
   const [totalCartItems, setTotalCartItems] = useState(0);
   const [totalPrice, setTotalPrice] = useState(0);
   const [tax, setTax] = useState(15);
@@ -24,6 +26,8 @@ export const DataProvider = props => {
   const cartItems = {
     totalItems: { get: totalCartItems, set: setTotalCartItems },
     cart: { get: shoppingCart, set: setShoppingCart },
+    brands: { get: brands, set: setBrands },
+    filteredList: { get: filteredList, set: setFilteredList },
     totalPrice: { get: totalPrice, set: setTotalPrice },
     tax: { get: tax, set: setTax },
     selected: { get: selectedItems, set: setSelectedItems }

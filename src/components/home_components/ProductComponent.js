@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 import { findProductById } from "../../utils/Utils";
 import { ErrorAlert } from "../../utils/Utils";
 
-function ProductComponent({ featuredProducts }) {
+function ProductComponent({ products }) {
   const [, , , methods, cartItems] = useContext(DataContext);
   const [error, setError] = useState("");
   const url_image = "./resources/product-images/img/";
@@ -27,12 +27,15 @@ function ProductComponent({ featuredProducts }) {
     }
   };
 
+  //console.log(cartItems.filteredList);
+  //console.log(getProductsBrand(products));
+
   return (
     <>
       <div className="added-product-in-component">
         {error && ErrorAlert(error)}
       </div>
-      {featuredProducts.map((item, index) => (
+      {products.map((item, index) => (
         <>
           <div className="feature-section-box" key={index}>
             <div className="feature-img-container">
@@ -47,14 +50,14 @@ function ProductComponent({ featuredProducts }) {
             <div className="feature-overlay">
               <div className="feature-addtocart">
                 <i
-                  className="fa fa-shopping-cart fa-1x"
                   onClick={addItem}
                   data-id={item.fields.id}
+                  className="fa fa-cart-plus"
                 ></i>
               </div>
               <div className="feature-addtocart">
                 <NavLink to={`/product/${item.fields.id}`}>
-                  <i class="fa fa-search"></i>
+                  <i className="fa fa-search"></i>
                 </NavLink>
               </div>
             </div>

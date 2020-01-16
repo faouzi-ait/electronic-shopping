@@ -10,7 +10,9 @@ import { getFeaturedProducts } from "../utils/Utils";
 import classnames from "classnames";
 
 export default function Home_Page() {
-  const [products, ,] = useContext(DataContext);
+  const [products, , , , ] = useContext(
+    DataContext
+  );
   const bg_url =
     "url(../../resources/page-images/images/mainBcg.jpeg) center/cover no-repeat;";
 
@@ -45,7 +47,7 @@ export default function Home_Page() {
           <div className="underline"></div>
         </div>
         <div className="feature-section">
-          <ProductComponent featuredProducts={getFeaturedProducts(products)} />
+          <ProductComponent products={getFeaturedProducts(products)} />
         </div>
       </div>
     </div>

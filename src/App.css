@@ -197,6 +197,7 @@ a.primary-button:hover {
   background: rgba(0, 0, 0, 0.350);
 }
 
+
 .overlay {
   width: 30%;
   height: 20rem;
@@ -235,6 +236,31 @@ a.primary-button:hover {
   text-transform: uppercase;
   letter-spacing: 2px;
 }
+
+@media screen and (max-width: 800px) {
+  .overlay-container {
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+  }
+
+  .overlay {
+    width: 60% !important;
+    height: 20rem;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .overlay-container {
+    min-width: 100vw !important;
+    min-height: 100vh !important;
+  }
+
+  .overlay {
+    width: 60% !important;
+    height: 20rem;
+  }
+}
+
 
 /* CONTACT FORM STYLES */
 form {
@@ -412,9 +438,45 @@ textarea:focus {
 
 .product-section {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(4, minmax(300px, 1fr));
   text-align: center;
   padding-top: 4rem;
+}
+
+@media screen and (max-width: 1050px) {
+  .product-section {
+    grid-template-columns: repeat(3, minmax(250px, 1fr));
+  }
+}
+
+.filtered-list {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  width: 80%;
+  margin: 0 auto 1.5rem;
+  padding: 15px 25px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+
+  -webkit-box-shadow: 1px 1px 3px 1px #ccc;
+  -moz-box-shadow: 1px 1px 3px 1px #ccc;
+  box-shadow: 1px 1px 3px 1px #ccc;
+}
+
+@media screen and (max-width: 800px) {
+  .filtered-list {
+    margin: 4rem auto -2.5rem;
+  }
+}
+
+.filter-item-name {
+  display: inline-block;
+  margin-left: .3rem;
+  letter-spacing: 1.5px;
+}
+
+.filter-item-name::first-letter {
+  text-transform: uppercase;
 }
 
 .filter-section {
@@ -459,6 +521,7 @@ textarea:focus {
   padding: 15px 25px;
   transition: var(--maintransition);
   border-radius: 3px;
+
   -webkit-box-shadow: 1px 1px 2px 1px #ccc;
   -moz-box-shadow: 1px 1px 2px 1px #ccc;
   box-shadow: 1px 1px 2px 1px #ccc;

@@ -27,3 +27,7 @@ export const findProductById = (array, id) => {
 export const getFeaturedProducts = array => {
   return array.filter(item => item.fields.featured === true);
 };
+
+export const getProductsBrand = array => {
+  return array.map(item => item.fields.company);
+};
