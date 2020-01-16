@@ -463,6 +463,12 @@ textarea:focus {
   box-shadow: 1px 1px 3px 1px #ccc;
 }
 
+.range-style {
+  display: flex;
+  justify-content: center;
+  grid-column: 2 / 5;
+}
+
 @media screen and (max-width: 800px) {
   .filtered-list {
     margin: 4rem auto -2.5rem;

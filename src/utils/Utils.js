@@ -31,3 +31,21 @@ export const getFeaturedProducts = array => {
 export const getProductsBrand = array => {
   return array.map(item => item.fields.company);
 };
+
+export const getMaxPriceValue = array => {
+  const max = array
+    .map(product => product.fields.price)
+    .reduce((a, b) => {
+      return Math.max(a, b);
+    });
+  return max;
+};
+
+export const getMinPriceValue = array => {
+  const min = array
+    .map(product => product.fields.price)
+    .reduce((a, b) => {
+      return Math.min(a, b);
+    });
+  return min;
+};

@@ -1,26 +1,50 @@
 import React, { useState, useEffect, useContext } from "react";
 import ProductComponent from "../components/home_components/ProductComponent";
-import { getProductsBrand } from "../utils/Utils";
+import {
+  getProductsBrand,
+  getMaxPriceValue,
+  getMinPriceValue
+} from "../utils/Utils";
 import { DataContext } from "../context/context";
 
 const Product_List_Page = _ => {
   const [products, , , , cartItems] = useContext(DataContext);
   const [searchCriterias, setSearchCriterias] = useState([]);
   const [searchResult, setSearchResult] = useState([]);
+  const [rangeValue, setRangeValue] = useState(0);
+  const [min, setMin] = useState(0);
+  const [max, setMax] = useState(0);
 
   useEffect(_ => {
     cartItems.brands.set([...new Set(getProductsBrand(products))]);
+    setMax(getMaxPriceValue(products));
+    setMin(getMinPriceValue(products));
   }, []);
 
   const handleCheckbox = e => {
     if (e.target.checked) {
       setSearchCriterias([...searchCriterias, e.target.dataset.name]);
+      filterList();
     } else {
-      const newSearchList = searchCriterias.filter(
-        item => item !== e.target.dataset.name
+      setSearchCriterias(
+        searchCriterias.filter(item => item !== e.target.dataset.name)
       );
-      setSearchCriterias(newSearchList);
+      filterList();
     }
+  };
+
+  const filterList = _ => {
+    searchCriterias.length === 0
+      ? setSearchResult(
+          products.filter(item => item.fields.price >= rangeValue)
+        )
+      : setSearchResult(
+          products.filter(
+            item =>
+              searchCriterias.includes(item.fields.company) &&
+              item.fields.price < rangeValue
+          )
+        );
   };
 
   useEffect(
@@ -30,12 +54,9 @@ const Product_List_Page = _ => {
     [searchCriterias, products]
   );
 
-  const filterList = _ => {
-    searchCriterias.length === 0
-      ? setSearchResult(products)
-      : setSearchResult(
-          products.filter(item => searchCriterias.includes(item.fields.company))
-        );
+  const handleRange = e => {
+    setRangeValue(parseInt(e.target.value));
+    filterList();
   };
 
   return (
@@ -59,6 +80,20 @@ const Product_List_Page = _ => {
             </label>
           </div>
         ))}
+        <div className="range-style">
+          <label htmlFor="range" className="filter-item-name">
+            Price Range: €{rangeValue ? rangeValue : min}
+          </label>
+          <input
+            type="range"
+            min={min}
+            max={max}
+            step="5"
+            defaultValue={min}
+            onChange={handleRange}
+            name="range"
+          ></input>
+        </div>
       </div>
       <div className="product-section">
         <ProductComponent products={searchResult} />
