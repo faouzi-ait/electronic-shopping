@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css?family=Montserrat:400,700,700i,800,800i,900|Open+Sans&display=swap");
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
 :root {
   --primary: #5fb7ea;
@@ -292,7 +293,7 @@ form button:hover {
 
 label {
   letter-spacing: 1px;
-  padding: 0.5em 0.5em 0.5em 0;
+  padding: 0.5em 0.5em 0em 0;
 }
 
 input,
@@ -463,6 +464,33 @@ textarea:focus {
   box-shadow: 1px 1px 3px 1px #ccc;
 }
 
+/* FILTER CHECKBOXES */
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=checkbox]+label:before {
+  font-family: FontAwesome;
+  display: inline-block;
+}
+
+input[type=checkbox]+label:before {
+  content: "\f096";
+}
+
+input[type=checkbox]+label:before {
+  letter-spacing: 10px;
+}
+
+input[type=checkbox]:checked+label:before {
+  content: "\f046";
+  letter-spacing: 5px;
+}
+
+input[type=range] {
+  outline: none;
+}
+
 .range-style {
   display: flex;
   justify-content: center;
@@ -477,12 +505,11 @@ textarea:focus {
 
 .filter-item-name {
   display: inline-block;
-  margin-left: .3rem;
   letter-spacing: 1.5px;
 }
 
 .filter-item-name::first-letter {
-  text-transform: uppercase;
+  text-transform: uppercase !important;
 }
 
 .filter-section {
