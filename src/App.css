@@ -884,6 +884,10 @@ input[type=range] {
   margin-top: -.4rem !important;
 }
 
+.cart-page-item-list:not(:last-child) {
+  margin-bottom: 1rem;
+}
+
 .cart-items {
   display: flex;
   flex-flow: column
@@ -893,12 +897,27 @@ input[type=range] {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   justify-items: center;
+  align-items: center;
   font-size: .85rem;
   text-transform: uppercase;
+  margin-bottom: 1rem;
 }
 
 .cart-items-headers:first-child {
   margin-top: 2rem;
+}
+
+.cart-item-image {
+  text-align: center;
+}
+
+.feature-img-cart-item {
+  width: 20%;
+}
+
+.icon-format {
+  font-size: 1.5rem;
+  color: red;
 }
 
 @media screen and (max-width: 800px) {

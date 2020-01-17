@@ -14,11 +14,7 @@ export default function SidebarRight() {
 
   const addQuantity = e => {
     const id = Number(e.target.dataset.id);
-    const product = findProductById(cartItems.cart.get, id);
-
-    product.quantity = product.quantity + 1;
-    product.total = product.quantity * product.fields.price;
-    methods.total();
+    methods.addToQuantity(id);
   };
 
   const minusQuantity = e => {
