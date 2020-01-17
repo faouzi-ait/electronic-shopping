@@ -71,7 +71,7 @@ export default function Shopping_Cart_Page() {
                     {item.fields.title.substring(0, 10)}...{" "}
                   </NavLink>{" "}
                 </div>{" "}
-                <div className="cart-page-item-list cart-item-price">{item.fields.price}</div>{" "}
+                <div className="cart-page-item-list cart-item-price">${item.fields.price}</div>{" "}
                 <div className="cart-page-item-list cart-item-quantity">
                   {" "}
                   <button
@@ -98,7 +98,7 @@ export default function Shopping_Cart_Page() {
                     data-id={item.fields.id}
                   ></i>{" "}
                 </div>{" "}
-                <div className="cart-page-item-list cart-item-price-total">{item.total}</div>{" "}
+                <div className="cart-page-item-list cart-item-price-total">${item.total}</div>{" "}
               </>
             ))}{" "}
           </div>{" "}

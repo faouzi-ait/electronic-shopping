@@ -30,7 +30,7 @@ export default function SidebarRight() {
   return (
     <RightNavContainer>
       {cartItems.cart.get.map((item, index) => (
-        <div key={index}>
+        <div key={index} className="cart-item-separation">
           <Image
             src={`${url_image}${item.fields.image.fields.file.url}`}
             alt="photo"
@@ -39,7 +39,6 @@ export default function SidebarRight() {
             <ItemTitle>{item.fields.title}</ItemTitle>
           </NavLink>
           <ItemCount>
-            Qty: {item.quantity}{" "}
             <button
               onClick={addQuantity}
               data-id={item.fields.id}
@@ -61,6 +60,7 @@ export default function SidebarRight() {
             >
               x
             </button>
+            <div>Quantity: {item.quantity} </div>
           </ItemCount>
         </div>
       ))}

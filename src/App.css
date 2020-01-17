@@ -444,6 +444,11 @@ textarea:focus {
   padding-top: 4rem;
 }
 
+.cart-item-separation {
+  margin-top: 1rem;
+  border-bottom: 1px solid #ccc
+}
+
 @media screen and (max-width: 1050px) {
   .product-section {
     grid-template-columns: repeat(3, minmax(250px, 1fr));
@@ -803,14 +808,17 @@ input[type=range] {
   width: 2rem;
   border-radius: 3px;
   color: #5f5e5e;
-  border: 1px solid #ccc;
+  border: none;
   background: #fff;
+  border: 1px solid transparent;
   outline: none;
+  transition: var(--maintransition);
 }
 
 .cart-btn:hover {
   color: #000;
-  border: 1px solid #000;
+  background: #fff;
+  border: 1px solid #ccc;
 }
 
 .cart-total {
@@ -818,6 +826,11 @@ input[type=range] {
   text-align: center;
   letter-spacing: 2px;
   font-size: 1.3rem;
+}
+
+.cart-items-headers__format {
+  letter-spacing: 1.5px;
+  font-size: 1.2rem !important;
 }
 
 .checkout,
