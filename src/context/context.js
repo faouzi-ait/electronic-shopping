@@ -48,12 +48,10 @@ export const DataProvider = props => {
         cartItems.cart.set(cart);
       }
     },
-
     removeFromCart: id => {
       const newCart = cartItems.cart.get.filter(item => item.fields.id !== id);
       cartItems.cart.set(newCart);
     },
-
     addToQuantity: id => {
       const product = findProductById(cartItems.cart.get, id);
 
@@ -61,7 +59,6 @@ export const DataProvider = props => {
       product.total = product.quantity * product.fields.price;
       methods.total();
     },
-
     minusQuantity: id => {
       const product = findProductById(cartItems.cart.get, id);
 
@@ -80,7 +77,6 @@ export const DataProvider = props => {
         methods.removeFromCart(id);
       }
     },
-
     clearCart: _ => {
       cartItems.cart.set([]);
     },
