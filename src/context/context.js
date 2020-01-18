@@ -40,6 +40,7 @@ export const DataProvider = props => {
 
   const methods = {
     addToCart: id => {
+      const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
       const selectedProduct = findProductById(products, Number(id));
 
       if (selectedProduct) {
@@ -49,15 +50,22 @@ export const DataProvider = props => {
           total: selectedProduct.fields.price
         };
 
+        fromStorage.push(addedProduct);
         const cart = [...cartItems.cart.get, addedProduct];
-        localStorage.setItem("shoppingCart", JSON.stringify(cart));
+
+        localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
         cartItems.cart.set(cart);
       }
     },
     removeFromCart: id => {
+      const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
       const newCart = cartItems.cart.get.filter(item => item.fields.id !== id);
-      localStorage.setItem("shoppingCart", JSON.stringify(newCart));
+      const product = findProductById(fromStorage, id);
+      const index = fromStorage.indexOf(product);
+
       cartItems.cart.set(newCart);
+      fromStorage.splice(index, 1);
+      localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
     },
     addToQuantity: id => {
       const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
@@ -80,13 +88,12 @@ export const DataProvider = props => {
         product.quantity = product.quantity - 1;
         product.total = product.quantity * product.fields.price;
 
-        localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
         fromStorage.splice(index, 1, product);
+        localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
         methods.total();
       }
 
       if (product.quantity === 0) {
-        fromStorage.splice(index, 1);
         methods.removeFromCart(id);
       }
     },
