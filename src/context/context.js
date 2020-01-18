@@ -9,7 +9,12 @@ export const DataProvider = props => {
   const [sideLeft, setSideLeft] = useState(false);
   const [openOverlay, setOpenOverlay] = useState(false);
   const [sideRight, setSideRight] = useState(false);
-  const [shoppingCart, setShoppingCart] = useState([]);
+
+  const [shoppingCart, setShoppingCart] = useState(
+    JSON.parse(localStorage.getItem("shoppingCart")) ||
+      localStorage.setItem("shoppingCart", JSON.stringify([]))
+  );
+
   const [brands, setBrands] = useState([]);
   const [filteredList, setFilteredList] = useState([]);
   const [totalCartItems, setTotalCartItems] = useState(0);
@@ -45,35 +50,43 @@ export const DataProvider = props => {
         };
 
         const cart = [...cartItems.cart.get, addedProduct];
+        localStorage.setItem("shoppingCart", JSON.stringify(cart));
         cartItems.cart.set(cart);
       }
     },
     removeFromCart: id => {
       const newCart = cartItems.cart.get.filter(item => item.fields.id !== id);
+      localStorage.setItem("shoppingCart", JSON.stringify(newCart));
       cartItems.cart.set(newCart);
     },
     addToQuantity: id => {
-      const product = findProductById(cartItems.cart.get, id);
+      const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
+      const product = findProductById(fromStorage, id);
+      const index = fromStorage.indexOf(product);
 
       product.quantity = product.quantity + 1;
       product.total = product.quantity * product.fields.price;
+
+      fromStorage.splice(index, 1, product);
+      localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
       methods.total();
     },
     minusQuantity: id => {
-      const product = findProductById(cartItems.cart.get, id);
-
-      if (product.quantity === 0) {
-        const newCart = cartItems.cart.get.filter(item => item.quantity !== 0);
-        cartItems.cart.set(newCart);
-      }
+      const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
+      const product = findProductById(fromStorage, id);
+      const index = fromStorage.indexOf(product);
 
       if (product.quantity >= 1) {
         product.quantity = product.quantity - 1;
         product.total = product.quantity * product.fields.price;
+
+        localStorage.setItem("shoppingCart", JSON.stringify(fromStorage));
+        fromStorage.splice(index, 1, product);
         methods.total();
       }
 
       if (product.quantity === 0) {
+        fromStorage.splice(index, 1);
         methods.removeFromCart(id);
       }
     },
@@ -81,9 +94,8 @@ export const DataProvider = props => {
       cartItems.cart.set([]);
     },
     total: _ => {
-      const tt = cartItems.cart.get
-        .map(item => item.total)
-        .reduce((a, b) => a + b, 0);
+      const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
+      const tt = fromStorage.map(item => item.total).reduce((a, b) => a + b, 0);
       cartItems.totalPrice.set(tt);
     },
     taxAmount: total => {

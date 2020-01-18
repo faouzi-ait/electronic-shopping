@@ -1,35 +1,32 @@
 import React, { useEffect, useContext } from "react";
 import { DataContext } from "../../context/context";
 import { RightNavContainer } from "./SidebarRightStyles";
-import { findProductById } from "../../utils/Utils";
 import { NavLink } from "react-router-dom";
 import { Image, ItemTitle, ItemCount } from "./SidebarRightStyles";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 export default function SidebarRight() {
   const [, , , methods, cartItems] = useContext(DataContext);
+  const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
   const url_image = "./resources/product-images/img/";
 
   useEffect(_ => methods.total());
 
   const addQuantity = e => {
-    const id = Number(e.target.dataset.id);
-    methods.addToQuantity(id);
+    methods.addToQuantity(Number(e.target.dataset.id));
   };
 
   const minusQuantity = e => {
-    const id = Number(e.target.dataset.id);
-    methods.minusQuantity(id);
+    methods.minusQuantity(Number(e.target.dataset.id));
   };
 
   const deleteItem = e => {
-    const id = Number(e.target.dataset.id);
-    methods.removeFromCart(id);
+    methods.removeFromCart(Number(e.target.dataset.id));
   };
 
   return (
     <RightNavContainer>
-      {cartItems.cart.get.map((item, index) => (
+      {fromStorage.map((item, index) => (
         <div key={index} className="cart-item-separation">
           <Image
             src={`${url_image}${item.fields.image.fields.file.url}`}

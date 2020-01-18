@@ -9,6 +9,7 @@ import Paypal from "../components/paypal/Paypal";
 
 export default function Shopping_Cart_Page() {
   const [, , , methods, cartItems] = useContext(DataContext);
+  const fromStorage = JSON.parse(localStorage.getItem("shoppingCart"));
   const bg_url =
     "url(../../resources/page-images/images/storeBcg.jpeg) center/cover no-repeat;";
   const url_image = "./resources/product-images/img/";
@@ -56,7 +57,7 @@ export default function Shopping_Cart_Page() {
           )}{" "}
           <div className="cart-items-headers cart-items-list">
             {" "}
-            {cartItems.cart.get.map((item, index) => (
+            {fromStorage.map((item, index) => (
               <>
                 {" "}
                 <div
@@ -120,7 +121,9 @@ export default function Shopping_Cart_Page() {
                 <p>Subtotal : ${cartItems.totalPrice.get}</p>{" "}
                 <p>Tax : ${methods.taxAmount(cartItems.totalPrice.get)}</p>{" "}
                 <p>Total : ${totalAftertax}</p>{" "}
-                <div className="paypal-btn"><Paypal /></div>
+                <div className="paypal-btn">
+                  <Paypal />
+                </div>
               </>
             ) : (
               "No items in your cart"
