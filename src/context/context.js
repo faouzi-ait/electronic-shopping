@@ -91,6 +91,7 @@ export const DataProvider = props => {
       }
     },
     clearCart: _ => {
+      localStorage.setItem("shoppingCart", JSON.stringify([]));
       cartItems.cart.set([]);
     },
     total: _ => {

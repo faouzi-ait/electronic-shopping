@@ -77,12 +77,10 @@ export default function SidebarRight() {
               </NavLink>
             </div>
             <div
-              className="cart-total checkout checkout-top-margin"
+              className="cart-total checkout checkout-top-margin special"
               onClick={methods.clearCart}
             >
-              <a href="#" className="special">
-                clear cart
-              </a>
+              clear cart
             </div>
           </>
         )}
