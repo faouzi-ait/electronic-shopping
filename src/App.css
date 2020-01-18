@@ -948,3 +948,7 @@ input[type=range] {
     margin-top: 3.5rem;
   }
 }
+
+.paypal-btn {
+  margin: 2rem 0;
+}

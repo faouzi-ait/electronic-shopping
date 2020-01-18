@@ -5,6 +5,8 @@ import {
   CartHero,
   AboutFilter
 } from "../components/home_components/HeroComponentStyles";
+import Paypal from "../components/paypal/Paypal";
+
 export default function Shopping_Cart_Page() {
   const [, , , methods, cartItems] = useContext(DataContext);
   const bg_url =
@@ -12,20 +14,21 @@ export default function Shopping_Cart_Page() {
   const url_image = "./resources/product-images/img/";
   const totalAftertax =
     methods.taxAmount(cartItems.totalPrice.get) + cartItems.totalPrice.get;
+
   useEffect(_ => methods.total());
+
   const removeItem = e => {
-    const id = Number(e.target.dataset.id);
-    methods.removeFromCart(id);
+    methods.removeFromCart(Number(e.target.dataset.id));
   };
+
   const addQuantity = e => {
-    const id = Number(e.target.dataset.id);
-    methods.addToQuantity(id);
+    methods.addToQuantity(Number(e.target.dataset.id));
   };
+
   const removeQuantity = e => {
-    const id = Number(e.target.dataset.id);
-    methods.minusQuantity(id);
+    methods.minusQuantity(Number(e.target.dataset.id));
   };
-  console.log(cartItems.cart.get);
+
   return (
     <div className="shopping">
       {" "}
@@ -56,7 +59,10 @@ export default function Shopping_Cart_Page() {
             {cartItems.cart.get.map((item, index) => (
               <>
                 {" "}
-                <div className="cart-page-item-list cart-item-image" key={index}>
+                <div
+                  className="cart-page-item-list cart-item-image"
+                  key={index}
+                >
                   {" "}
                   <img
                     src={`${url_image}${item.fields.image.fields.file.url}`}
@@ -71,7 +77,9 @@ export default function Shopping_Cart_Page() {
                     {item.fields.title.substring(0, 10)}...{" "}
                   </NavLink>{" "}
                 </div>{" "}
-                <div className="cart-page-item-list cart-item-price">${item.fields.price}</div>{" "}
+                <div className="cart-page-item-list cart-item-price">
+                  ${item.fields.price}
+                </div>{" "}
                 <div className="cart-page-item-list cart-item-quantity">
                   {" "}
                   <button
@@ -79,7 +87,7 @@ export default function Shopping_Cart_Page() {
                     data-id={item.fields.id}
                     className="cart-btn"
                   >
-                 +
+                    +
                   </button>
                   {item.quantity}
                   <button
@@ -98,7 +106,9 @@ export default function Shopping_Cart_Page() {
                     data-id={item.fields.id}
                   ></i>{" "}
                 </div>{" "}
-                <div className="cart-page-item-list cart-item-price-total">${item.total}</div>{" "}
+                <div className="cart-page-item-list cart-item-price-total">
+                  ${item.total}
+                </div>{" "}
               </>
             ))}{" "}
           </div>{" "}
@@ -110,6 +120,7 @@ export default function Shopping_Cart_Page() {
                 <p>Subtotal : ${cartItems.totalPrice.get}</p>{" "}
                 <p>Tax : ${methods.taxAmount(cartItems.totalPrice.get)}</p>{" "}
                 <p>Total : ${totalAftertax}</p>{" "}
+                <div className="paypal-btn"><Paypal /></div>
               </>
             ) : (
               "No items in your cart"
